@@ -6,13 +6,13 @@ const title = 'Why flagging a risk early strengthens delivery trust — Trust Le
 const description =
   'An early warning gives the other person choices. Learn how to raise a risk clearly and strengthen confidence through Delivery and Consistency.';
 const articleData = {
-  author: 'Scott Ward',
+  author: 'Scott Hunter',
   publishedTime: '2026-07-14T09:00:00+01:00',
   modifiedTime: '2026-07-14T09:00:00+01:00'
 };
 ---
 
-<BaseLayout title={title} description={description} pageClass="article-page" article={articleData}>
+<BaseLayout title={title} description={description} pageClass="article-page" article={articleData} noindex>
   <nav class="shell breadcrumb" aria-label="Breadcrumb">
     <a href="/">Home</a><span aria-hidden="true">›</span>
     <a href="/knowledge-base/">Knowledge Base</a><span aria-hidden="true">›</span>
@@ -25,7 +25,7 @@ const articleData = {
         <p class="eyebrow">Delivery &amp; Consistency</p>
         <h1>Why flagging a risk early strengthens delivery trust.</h1>
         <p class="lede">A late surprise makes the other person carry uncertainty they could have planned for. An early warning gives them choices.</p>
-        <p class="article-meta"><span>Draft for review</span><span>By Scott Ward</span><span>7 minute read</span></p>
+        <p class="article-meta"><span class="review-badge">Draft for review</span><span>By Scott Hunter</span><span>7 minute read</span></p>
       </div>
       <div class="signal-visual" role="img" aria-label="A risk is seen and flagged early, allowing the plan to change">
         <span class="signal-line signal-line--one"></span>
@@ -87,7 +87,7 @@ const articleData = {
         <aside class="article-cta" aria-labelledby="article-telegraph-heading">
           <h2 id="article-telegraph-heading">Want one useful idea like this each week?</h2>
           <p>Trust Telegraph is for people whose work depends on other people’s confidence.</p>
-          <a class="button button--yellow" href={siteConfig.telegraphUrl}>Join Trust Telegraph</a>
+          <a class="button button--yellow" href={siteConfig.telegraphUrl} data-analytics="join_trust_telegraph">Join Trust Telegraph</a>
         </aside>
       </article>
 

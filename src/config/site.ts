@@ -22,7 +22,12 @@ export function getSiteConfig(locale: EnabledLocale = defaultLocale) {
       'Trust Leader helps practitioners turn trust from a broad idea into specific behaviours people can practise in real working relationships.',
     trialUrl: withLocale(hubTrialUrl, locale),
     signInUrl: withLocale(import.meta.env.PUBLIC_HUB_SIGN_IN_URL || hubAuthUrl, locale),
-    telegraphUrl: localisePath('/#trust-telegraph', locale)
+    telegraphUrl: localisePath('/trust-telegraph/', locale),
+    contactUrl: localisePath('/contact/', locale),
+    privacyUrl: 'https://hub.thetrustleader.com/privacy-policy',
+    termsUrl: 'https://hub.thetrustleader.com/website-terms-and-conditions',
+    cookiesUrl: 'https://hub.thetrustleader.com/cookies-policy',
+    refundUrl: 'https://hub.thetrustleader.com/refund-policy'
   };
 }
 

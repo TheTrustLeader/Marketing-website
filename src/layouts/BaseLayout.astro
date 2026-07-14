@@ -1,6 +1,7 @@
 ---
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import ConsentBanner from '@/components/ConsentBanner.astro';
 import {
   defaultLocale,
   getLocaleConfig,
@@ -22,6 +23,8 @@ interface Props {
     publishedTime: string;
     modifiedTime: string;
   };
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+  noindex?: boolean;
 }
 
 const {
@@ -31,15 +34,16 @@ const {
   image,
   locale = defaultLocale,
   translations = {},
-  article
+  article,
+  structuredData = [],
+  noindex = false
 } = Astro.props;
 const localeDefinition = getLocaleConfig(locale);
 const messages = getMessages(locale);
-const configuredSite = import.meta.env.PUBLIC_SITE_URL;
-const canonical = configuredSite
-  ? new URL(Astro.url.pathname, configuredSite).toString()
-  : undefined;
-const socialImage = image && configuredSite ? new URL(image, configuredSite).toString() : undefined;
+const configuredSite = import.meta.env.PUBLIC_SITE_URL || Astro.site?.toString() || 'https://www.thetrustleader.com';
+const siteUrl = new URL(configuredSite);
+const canonical = new URL(Astro.url.pathname, siteUrl).toString();
+const socialImage = image ? new URL(image, siteUrl).toString() : undefined;
 const alternateLinks = configuredSite
   ? Object.entries(translations).map(([alternateLocale, path]) => ({
       hreflang: getLocaleConfig(alternateLocale as Locale).htmlLang,
@@ -49,6 +53,38 @@ const alternateLinks = configuredSite
 const defaultAlternate = configuredSite && translations[defaultLocale]
   ? new URL(translations[defaultLocale], configuredSite).toString()
   : undefined;
+const previewNoindex = import.meta.env.PUBLIC_ROBOTS_NOINDEX === 'true';
+const robots = noindex || previewNoindex
+  ? 'noindex, nofollow'
+  : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1';
+const organisationId = new URL('/#organisation', siteUrl).toString();
+const websiteId = new URL('/#website', siteUrl).toString();
+const pageStructuredData = Array.isArray(structuredData) ? structuredData : [structuredData];
+const schemaGraph = [
+  {
+    '@type': 'Organization',
+    '@id': organisationId,
+    name: 'Trust Leader',
+    legalName: 'Venandi Solutions Ltd',
+    url: new URL('/', siteUrl).toString(),
+    logo: new URL('/brand/trust-leader-logo.png', siteUrl).toString(),
+    founder: {
+      '@type': 'Person',
+      name: 'Scott Hunter'
+    }
+  },
+  {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    url: new URL('/', siteUrl).toString(),
+    name: 'Trust Leader',
+    description: 'Practical trust thinking and a behaviour-practice platform for coaches, consultants and L&D practitioners.',
+    inLanguage: localeDefinition.htmlLang,
+    publisher: { '@id': organisationId }
+  },
+  ...pageStructuredData.filter((item) => Object.keys(item).length > 0)
+];
+const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': schemaGraph }).replace(/</g, '\\u003c');
 ---
 
 <!DOCTYPE html>
@@ -58,9 +94,10 @@ const defaultAlternate = configuredSite && translations[defaultLocale]
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <meta name="author" content={article?.author || 'Scott Hunter'} />
     <meta name="theme-color" content="#2B3354" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="canonical" href={canonical} />
     {alternateLinks.map(({ hreflang, href }) => <link rel="alternate" hreflang={hreflang} href={href} />)}
     {defaultAlternate && <link rel="alternate" hreflang="x-default" href={defaultAlternate} />}
     <meta property="og:type" content={article ? 'article' : 'website'} />
@@ -73,7 +110,10 @@ const defaultAlternate = configuredSite && translations[defaultLocale]
     {article && <meta property="article:published_time" content={article.publishedTime} />}
     {article && <meta property="article:modified_time" content={article.modifiedTime} />}
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="/brand/trust-leader-icon.png" />
+    <link rel="apple-touch-icon" href="/brand/trust-leader-icon.png" />
     <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={jsonLd}></script>
     <slot name="head" />
   </head>
   <body class={pageClass}>
@@ -83,5 +123,6 @@ const defaultAlternate = configuredSite && translations[defaultLocale]
       <slot />
     </main>
     <Footer locale={locale} />
+    <ConsentBanner />
   </body>
 </html>

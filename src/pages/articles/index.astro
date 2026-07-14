@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TelegraphCTA from '@/components/TelegraphCTA.astro';
+
+const title = 'Trust Leader articles: trust, behaviour and working relationships';
+const description = 'Articles by Scott Hunter on trust, authority, influence, behaviour and the real working relationships behind performance.';
+const articles = (await getCollection('articles')).sort((a, b) => Number(b.data.featured) - Number(a.data.featured) || b.data.updated.valueOf() - a.data.updated.valueOf());
+const allDrafts = articles.every((entry) => entry.data.status !== 'published');
+---
+
+<BaseLayout title={`${title} — Trust Leader`} description={description} pageClass="articles-index" noindex={allDrafts}>
+  <header class="page-hero page-hero--articles">
+    <div class="shell page-hero__grid">
+      <div><p class="eyebrow">Articles</p><h1>Trust, pulled apart and put back into practice.</h1><p class="lede">Current thinking on the moments where confidence is earned, borrowed, tested or quietly lost.</p></div>
+      <aside class="article-index-note"><span>Written by Scott Hunter</span><strong>Plain answers. Practical questions. Evidence labelled honestly.</strong></aside>
+    </div>
+  </header>
+
+  <section class="section section--paper" aria-labelledby="article-list-heading">
+    <div class="shell">
+      <div class="section-heading"><div><p class="eyebrow">Latest thinking</p><h2 id="article-list-heading">Start with the question in front of you.</h2></div><p>{allDrafts ? 'These drafts are in the site review branch. They remain excluded from search indexing until approved for publication.' : 'Seven distinct essays, from short observations to deeper practical frameworks. Choose the question closest to the work in front of you.'}</p></div>
+      <div class="content-card-grid" data-content-list>
+        {articles.map((entry) => (
+          <article class:list={['content-card', { 'content-card--featured': entry.data.featured }]} data-search-item={`${entry.data.title} ${entry.data.description} ${entry.data.eyebrow} ${entry.data.searchIntent}`.toLowerCase()}>
+            <div class="content-card__top"><span>{entry.data.eyebrow}</span>{entry.data.status !== 'published' && <b>Draft for review</b>}</div>
+            <h3><a href={`/articles/${entry.id}/`}>{entry.data.title}</a></h3>
+            <p>{entry.data.description}</p>
+            <div class="content-card__meta"><span>{entry.data.readTime}</span><time datetime={entry.data.updated.toISOString()}>Updated {entry.data.updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}</time></div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--green"><div class="shell"><TelegraphCTA heading="Get the next useful idea by email." text="Trust Telegraph is a short note for people whose work depends on other people’s confidence." /></div></section>
+</BaseLayout>

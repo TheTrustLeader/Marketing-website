@@ -1,0 +1,78 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TrialCTA from '@/components/TrialCTA.astro';
+import { siteConfig } from '@/config/site';
+
+const title = 'Trust tools for coaches, consultants and L&D practitioners';
+const description = 'Trust Leader gives practitioners a Trust Map, between-session behaviour practice and dated evidence for work with clients and cohorts.';
+---
+
+<BaseLayout title={`${title} — Trust Leader`} description={description} pageClass="practitioner-page">
+  <header class="page-hero page-hero--practitioners">
+    <div class="shell page-hero__grid">
+      <div>
+        <p class="eyebrow">For practitioners</p>
+        <h1>Keep your judgement at the centre. Give the work more structure.</h1>
+        <p class="lede">You bring the client and the relationship. Trust Leader gives the work a map, practical action between conversations and evidence you can review together.</p>
+        <div class="hero__actions">
+          <a class="button button--green" href={siteConfig.trialUrl} data-analytics="start_trial">Start your 28-day free trial</a>
+          <a class="button button--outline" href="/how-it-works/">See how it works</a>
+        </div>
+      </div>
+      <div class="practitioner-signal" aria-label="Trust Leader supports structure, practice and evidence while practitioner judgement stays central">
+        <span>Structure</span><span>Practice</span><span>Evidence</span>
+        <strong>Your judgement</strong>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section--paper">
+    <div class="shell problem-grid">
+      <div><p class="eyebrow">The gap it closes</p><h2>Trust comes up in the room. Then the session ends.</h2></div>
+      <div><p>Trust sits beneath many coaching, consulting and L&D conversations. A client is capable but not backed. A team completes the work but stays silent. A relationship keeps producing surprises.</p><p>You can name the issue. The difficult part is giving the person something specific to do before the next conversation, then finding evidence of what changed.</p><p>Trust Leader connects those two moments.</p></div>
+    </div>
+  </section>
+
+  <section class="section section--navy" aria-labelledby="practitioner-value-heading">
+    <div class="shell">
+      <div class="section-heading"><div><p class="eyebrow eyebrow--light">What it adds</p><h2 id="practitioner-value-heading">Structure, practice and evidence.</h2></div><p>The platform handles the repeatable parts. The judgement, challenge and relationship remain yours.</p></div>
+      <div class="value-columns">
+        <article><span>01</span><h3>Structure</h3><p>Five Trust Questions and focused behaviours give the trust conversation a shared language without reducing the person to a type or score.</p></article>
+        <article><span>02</span><h3>Practice</h3><p>Short activities help clients act in the real relationship between conversations, where confidence is actually formed.</p></article>
+        <article><span>03</span><h3>Evidence</h3><p>Dated maps, activity records and private reflections give the client something specific to review and decide from.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell practitioner-use-grid">
+      <div>
+        <p class="eyebrow">Use it without becoming it</p>
+        <h2>Trust Leader supports your approach. It does not replace it.</h2>
+        <p>The platform is good at providing a consistent structure, prompts for practice and a dated record. It cannot make the judgement a practitioner makes about the person, situation and pace.</p>
+        <p>Your client’s reflections and journals remain private by default. They choose what to bring back. That keeps the platform useful without turning the relationship into monitoring.</p>
+      </div>
+      <ul class="practice-outcomes">
+        <li><strong>Coaches</strong><span>Give trust work a practical thread between sessions.</span></li>
+        <li><strong>Consultants</strong><span>Connect a behaviour framework to real organisational work.</span></li>
+        <li><strong>L&amp;D and OD</strong><span>Add practice and evidence to programmes already in place.</span></li>
+        <li><strong>Small providers</strong><span>Offer a structured client experience without building a platform.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--green">
+    <div class="shell growth-grid">
+      <div><p class="eyebrow">Start small, then grow</p><h2>Use the platform at the level your practice needs.</h2></div>
+      <div class="growth-steps">
+        <article><span>Trial</span><h3>Test one real relationship.</h3><p>28 days, no credit card and no automatic subscription.</p><a class="text-link" href={siteConfig.trialUrl} data-analytics="start_trial">Start free</a></article>
+        <article><span>Practitioner</span><h3>Work with your own clients.</h3><p>£75 a month with five client seats included.</p><a class="text-link" href="/pricing/">See pricing</a></article>
+        <article><span>Certification</span><h3>Design and co-brand.</h3><p>Founder offer planned at £995 one-off for the first 50 places.</p><a class="text-link" href="/contact/?topic=certification">Register interest</a></article>
+        <article><span>Partner</span><h3>Run a larger programme.</h3><p>For consultancies, providers and organisation-wide use.</p><a class="text-link" href="/contact/?topic=partnership">Talk to us</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section"><div class="shell"><TrialCTA text="28 days free. No card. Decide by using it with a real situation." /></div></section>
+</BaseLayout>
+

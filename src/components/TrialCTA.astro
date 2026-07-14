@@ -1,0 +1,25 @@
+---
+import { siteConfig } from '@/config/site';
+
+interface Props {
+  heading?: string;
+  text?: string;
+  compact?: boolean;
+}
+
+const {
+  heading = 'See exactly what your clients will experience.',
+  text = '28 days free. No credit card. No automatic subscription. You decide whether to continue.',
+  compact = false
+} = Astro.props;
+---
+
+<section class:list={['trial-cta', { 'trial-cta--compact': compact }]} aria-labelledby="trial-cta-heading">
+  <div>
+    <p class="eyebrow eyebrow--light">Start with one relationship</p>
+    <h2 id="trial-cta-heading">{heading}</h2>
+    <p>{text}</p>
+  </div>
+  <a class="button button--green" href={siteConfig.trialUrl} data-analytics="start_trial">Start your 28-day free trial</a>
+</section>
+

@@ -4,12 +4,15 @@ The public discovery, credibility and conversion layer for Trust Leader.
 
 ## Current build
 
-This first implementation includes:
+The current implementation includes:
 
 - the Home page and responsive Maya–Daniel Trust Journey;
-- the Knowledge Base landing page;
-- an example long-form article template;
-- shared navigation, footer, design tokens and accessibility foundations.
+- The thinking, How it works, For practitioners, Pricing and About pages;
+- searchable Knowledge Base and Articles landing pages;
+- ten source-led article and Knowledge Base drafts using shared content templates;
+- Trust Telegraph and contact forms prepared for Netlify Forms;
+- search and AI-discovery controls, structured data and a generated sitemap;
+- consent-gated analytics support, shared navigation, footer, design tokens and accessibility foundations.
 
 The product Hub remains a separate product and repository.
 
@@ -32,6 +35,8 @@ npm run build
 ## Configuration
 
 Copy `.env.example` to `.env` to override the public site or Hub destinations. Trial actions default to the verified registration deep link, `https://hub.thetrustleader.com/auth?mode=signup`, while sign-in actions default to `https://hub.thetrustleader.com/auth`. Keep the destinations separate so each authentication state remains explicit. Do not commit secrets.
+
+Analytics remains disabled until `PUBLIC_GA_MEASUREMENT_ID` is set. When supplied, it loads only after the visitor accepts analytics cookies. Netlify preview and branch deployments set `PUBLIC_ROBOTS_NOINDEX=true` automatically.
 
 `PUBLIC_HUB_LOCALE_PARAM` is deliberately blank. Set it only after the Hub verifies a locale handoff parameter; the marketing site must not invent one.
 
@@ -58,8 +63,12 @@ The repository includes a Netlify configuration for pull-request previews:
 - publish directory: `dist`;
 - Node.js: current Node 22 release.
 
-Connect the GitHub repository through Netlify's **Import an existing project** flow. Netlify will then build the production branch and create a separate preview for each pull request.
+Netlify builds the production branch and creates a separate, search-blocked preview for each pull request.
+
+## Content publication
+
+Article and Knowledge Base entries live in `src/content`. Each entry has a `draft` or `published` status. Draft pages are available in the review preview but remain out of the sitemap, `llms.txt` and search indexes. See [`docs/search-and-ai-discovery.md`](docs/search-and-ai-discovery.md) for the page intent map and publication gate.
 
 ## Status
 
-This is an implementation draft. Product panels use safe fictional demonstration data and photography spaces remain placeholders until approved assets are supplied. English is enabled; Arabic is planned but must not be presented as available yet.
+This is an implementation draft. Product panels use safe fictional demonstration data and remain placeholders until approved platform captures are supplied. The portrait space also remains a placeholder. English is enabled; Arabic is planned but must not be presented as available yet.

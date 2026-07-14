@@ -10,10 +10,11 @@ const { inverse = false, locale = defaultLocale } = Astro.props;
 ---
 
 <a class:list={['brand', { 'brand--inverse': inverse }]} href={localisePath('/', locale)} aria-label="Trust Leader home">
-  <svg class="brand__mark" viewBox="0 0 46 50" aria-hidden="true">
-    <circle cx="23" cy="21" r="17" fill="none" stroke="currentColor" stroke-width="4" />
-    <path d="m14 21 6 6L33 14" fill="none" stroke="#78BE7C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
-    <path d="M12 45h22" stroke="#FFD95A" stroke-width="5" stroke-linecap="round" />
-  </svg>
-  <span>TRUST LEADER</span>
+  <img
+    class="brand__wordmark"
+    src={inverse ? '/brand/trust-leader-logo-white.png' : '/brand/trust-leader-logo.png'}
+    width="2338"
+    height="1001"
+    alt="The Trust Leader"
+  />
 </a>

@@ -14,9 +14,12 @@ export interface SharedMessages {
   navigation: {
     menu: string;
     ariaLabel: string;
+    thinking: string;
     howItWorks: string;
     practitioners: string;
     knowledgeBase: string;
+    articles: string;
+    pricing: string;
     about: string;
     aboutPendingTitle: string;
     signIn: string;
@@ -28,9 +31,11 @@ export interface SharedMessages {
     explore: string;
     connect: string;
     account: string;
-    aboutPending: string;
-    contactPending: string;
-    privacyPending: string;
+    about: string;
+    contact: string;
+    privacy: string;
+    terms: string;
+    cookies: string;
     legal: string;
   };
   telegraph: {
@@ -60,11 +65,14 @@ const en: SharedMessages = {
   navigation: {
     menu: 'Menu',
     ariaLabel: 'Main navigation',
+    thinking: 'The thinking',
     howItWorks: 'How it works',
     practitioners: 'For practitioners',
     knowledgeBase: 'Knowledge Base',
+    articles: 'Articles',
+    pricing: 'Pricing',
     about: 'About',
-    aboutPendingTitle: 'About page pending',
+    aboutPendingTitle: 'About Trust Leader',
     signIn: 'Sign in',
     signInPendingTitle: 'Hub sign-in route pending',
     startTrial: 'Start free trial'
@@ -74,10 +82,12 @@ const en: SharedMessages = {
     explore: 'Explore',
     connect: 'Connect',
     account: 'Account',
-    aboutPending: 'About page pending',
-    contactPending: 'Contact route pending',
-    privacyPending: 'Privacy route pending',
-    legal: 'Trust Leader. Initial implementation draft; final links, imagery and legal routes are pending approval.'
+    about: 'About',
+    contact: 'Contact',
+    privacy: 'Privacy',
+    terms: 'Terms',
+    cookies: 'Cookies',
+    legal: 'Trust Leader is a trading name of Venandi Solutions Ltd. Registered in England and Wales.'
   },
   telegraph: {
     eyebrow: 'Trust Telegraph',

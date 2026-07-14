@@ -1,0 +1,92 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TelegraphCTA from '@/components/TelegraphCTA.astro';
+import { siteConfig } from '@/config/site';
+
+const title = 'What is trust? You do not decide if you are trusted — Trust Leader';
+const description = 'Trust is someone’s confidence in you with something they care about. It is contextual, behavioural and decided by the other person.';
+const site = Astro.site || new URL('https://www.thetrustleader.com');
+const structuredData = {
+  '@type': 'Article',
+  headline: 'You do not decide if you are trusted',
+  description,
+  author: { '@type': 'Person', name: 'Scott Hunter', url: new URL('/about/', site).toString() },
+  publisher: { '@id': new URL('/#organisation', site).toString() },
+  mainEntityOfPage: new URL('/the-thinking/', site).toString(),
+  datePublished: '2026-07-07',
+  dateModified: '2026-07-14',
+  inLanguage: 'en-GB'
+};
+---
+
+<BaseLayout title={title} description={description} pageClass="thinking-page" structuredData={structuredData}>
+  <header class="page-hero page-hero--thinking">
+    <div class="shell page-hero__grid">
+      <div>
+        <p class="eyebrow">The thinking</p>
+        <h1>You do not decide if you are trusted.</h1>
+        <p class="lede">Trust belongs to the person being asked to rely on you. That changes where the work begins.</p>
+        <div class="hero__actions">
+          <a class="button button--green" href="/how-it-works/">See how it becomes practice</a>
+          <a class="button button--outline" href="/knowledge-base/">Explore the Knowledge Base</a>
+        </div>
+      </div>
+      <blockquote class="definition-panel">
+        <span>Trust Leader definition</span>
+        <p>Trust is someone’s confidence in you with something they care about.</p>
+      </blockquote>
+    </div>
+  </header>
+
+  <section class="section section--paper">
+    <div class="shell editorial-grid">
+      <aside class="editorial-aside">
+        <strong>The outside-in shift</strong>
+        <p>Move from judging your intention to understanding the experience another person has of you.</p>
+      </aside>
+      <article class="editorial-copy">
+        <h2>Trust is the other person’s decision.</h2>
+        <p>You cannot declare yourself trustworthy. You can believe that you are, but the confidence belongs to the person being asked to rely on you.</p>
+        <p>When we decide whether to trust someone, we consider what we could gain and what we risk. To be trusted, we have to work from the other side of the table. What is this person relying on us with? What would it cost them if we let them down? What do they need to experience to feel confident?</p>
+
+        <h2>People experience behaviour, not intention.</h2>
+        <p>Nobody else can see what you meant. They see what you said, what you did, whether you followed through and how you responded under pressure.</p>
+        <p>Good intent with poor delivery can still erode confidence. Silence is not neutral either. When the reason for your behaviour is invisible, people do not leave the space empty. They infer a reason from the evidence they have.</p>
+
+        <aside class="pull-quote">
+          <p>You know your intention. They have your behaviour.</p>
+        </aside>
+
+        <h2>Trust is contextual, not one score.</h2>
+        <p>Someone may trust you completely to deliver a piece of work and not trust you with how they feel about it. A colleague may believe what you say and still doubt that you would act in their interest when it matters.</p>
+        <p>The useful question is not “do they trust me?” It is what they trust you with, what they do not trust you with yet, and which experience would make a useful difference.</p>
+
+        <div class="question-stack" aria-label="The five Trust Questions">
+          <p><span>01</span>Do they believe what I say?</p>
+          <p><span>02</span>Do they believe I will follow through and respond consistently?</p>
+          <p><span>03</span>Do they believe I can deliver?</p>
+          <p><span>04</span>Do they feel understood and responded to appropriately?</p>
+          <p><span>05</span>Do they believe I act in their interest?</p>
+        </div>
+
+        <h2>Behaviour can be practised.</h2>
+        <p>If trust were a fixed personality trait, there would be little to work with. Trust is a judgement shaped by repeated experience, and behaviour can be noticed, practised and changed.</p>
+        <p>This is not performance. Technique with nothing real underneath it will not carry a relationship. The work is to understand what a particular person needs to experience, then make a genuine intention visible through consistent behaviour.</p>
+        <p>You do not control the other person’s verdict. You have more influence over the evidence than you may think.</p>
+
+        <aside class="principle-strip">
+          <strong>Purpose is the anchor.</strong>
+          <strong>The Trust Map is the application.</strong>
+          <strong>Practice builds the evidence.</strong>
+        </aside>
+
+        <p><a class="text-link" href={siteConfig.trialUrl} data-analytics="start_trial_contextual">Start your own 28-day Trust Journey</a> when you want to put the thinking into practice.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--green">
+    <div class="shell"><TelegraphCTA heading="Keep one useful trust question in view." text="Trust Telegraph brings practical thinking like this to your inbox." /></div>
+  </section>
+</BaseLayout>
+

@@ -22,21 +22,26 @@ const messages = getMessages(locale);
       </div>
       <div>
         <h2>{messages.footer.explore}</h2>
-        <a href={localisePath('/#how-it-works', locale)}>{messages.navigation.howItWorks}</a>
-        <a href={localisePath('/#practitioners', locale)}>{messages.navigation.practitioners}</a>
+        <a href={localisePath('/the-thinking/', locale)}>{messages.navigation.thinking}</a>
+        <a href={localisePath('/how-it-works/', locale)}>{messages.navigation.howItWorks}</a>
+        <a href={localisePath('/for-practitioners/', locale)}>{messages.navigation.practitioners}</a>
+        <a href={localisePath('/pricing/', locale)}>{messages.navigation.pricing}</a>
         <a href={localisePath('/knowledge-base/', locale)}>{messages.navigation.knowledgeBase}</a>
+        <a href={localisePath('/articles/', locale)}>{messages.navigation.articles}</a>
       </div>
       <div>
         <h2>{messages.footer.connect}</h2>
         <a href={siteConfig.telegraphUrl}>{messages.telegraph.eyebrow}</a>
-        <span class="site-footer__pending">{messages.footer.aboutPending}</span>
-        <span class="site-footer__pending">{messages.footer.contactPending}</span>
+        <a href={localisePath('/about/', locale)}>{messages.footer.about}</a>
+        <a href={siteConfig.contactUrl}>{messages.footer.contact}</a>
       </div>
       <div>
         <h2>{messages.footer.account}</h2>
-        <a href={siteConfig.trialUrl}>{messages.navigation.startTrial}</a>
+        <a href={siteConfig.trialUrl} data-analytics="start_trial_footer">{messages.navigation.startTrial}</a>
         {siteConfig.signInUrl ? <a href={siteConfig.signInUrl}>{messages.navigation.signIn}</a> : <span class="site-footer__pending">{messages.navigation.signInPendingTitle}</span>}
-        <span class="site-footer__pending">{messages.footer.privacyPending}</span>
+        <a href={siteConfig.privacyUrl}>{messages.footer.privacy}</a>
+        <a href={siteConfig.termsUrl}>{messages.footer.terms}</a>
+        <a href={siteConfig.cookiesUrl}>{messages.footer.cookies}</a>
       </div>
     </div>
     <p class="site-footer__legal">© {new Date().getFullYear()} {messages.footer.legal}</p>
