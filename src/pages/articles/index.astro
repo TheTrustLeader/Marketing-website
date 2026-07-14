@@ -19,10 +19,10 @@ const allDrafts = articles.every((entry) => entry.data.status !== 'published');
 
   <section class="section section--paper" aria-labelledby="article-list-heading">
     <div class="shell">
-      <div class="section-heading"><div><p class="eyebrow">Latest thinking</p><h2 id="article-list-heading">Start with the question in front of you.</h2></div><p>{allDrafts ? 'These drafts are in the site review branch. They remain excluded from search indexing until approved for publication.' : 'Seven distinct essays, from short observations to deeper practical frameworks. Choose the question closest to the work in front of you.'}</p></div>
+      <div class="section-heading"><div><p class="eyebrow">Latest thinking</p><h2 id="article-list-heading">Start with the question in front of you.</h2></div><p>{allDrafts ? 'These drafts are in the site review branch. They remain excluded from search indexing until approved for publication.' : 'Explore the question closest to what you’re working on.'}</p></div>
       <div class="content-card-grid" data-content-list>
         {articles.map((entry) => (
-          <article class:list={['content-card', { 'content-card--featured': entry.data.featured }]} data-search-item={`${entry.data.title} ${entry.data.description} ${entry.data.eyebrow} ${entry.data.searchIntent}`.toLowerCase()}>
+          <article class:list={['content-card', `content-card--${entry.data.accent}`, { 'content-card--featured': entry.data.featured }]} data-search-item={`${entry.data.title} ${entry.data.description} ${entry.data.eyebrow} ${entry.data.searchIntent}`.toLowerCase()}>
             <div class="content-card__top"><span>{entry.data.eyebrow}</span>{entry.data.status !== 'published' && <b>Draft for review</b>}</div>
             <h3><a href={`/articles/${entry.id}/`}>{entry.data.title}</a></h3>
             <p>{entry.data.description}</p>

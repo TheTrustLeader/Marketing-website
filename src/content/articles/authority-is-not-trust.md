@@ -10,7 +10,7 @@ updated: 2026-07-14
 readTime: "5 minute read"
 status: "published"
 accent: "yellow"
-featured: true
+featured: false
 searchIntent: "difference between authority compliance influence and trust"
 keywords:
   - "authority versus trust"

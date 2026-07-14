@@ -10,7 +10,7 @@ updated: 2026-07-14
 readTime: "4 minute read"
 status: "published"
 accent: "green"
-featured: true
+featured: false
 searchIntent: "do qualifications make clients trust you"
 keywords:
   - "qualifications and client trust"

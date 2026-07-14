@@ -10,7 +10,7 @@ updated: 2026-07-14
 readTime: "6 minute read"
 status: "published"
 accent: "navy"
-featured: true
+featured: false
 searchIntent: "why don't people trust me"
 keywords:
   - "why people don't trust me"
