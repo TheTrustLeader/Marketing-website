@@ -378,6 +378,13 @@
   .article-body > p:first-child { color: var(--navy); font-size: 1.42rem; line-height: 1.55; }
   .article-body h2 { margin: 3.4rem 0 1.2rem; font-size: 2.3rem; scroll-margin-top: 110px; }
   .article-body p { margin-bottom: 1.35rem; }
+  .article-sources { margin-top: 4rem; border-top: 3px solid var(--yellow); padding-top: 1.5rem; font-family: Lato, sans-serif; }
+  .article-sources h2 { margin: 0 0 1rem; font-family: Lato, sans-serif; font-size: 1.05rem; font-weight: 900; letter-spacing: .04em; text-transform: uppercase; }
+  .article-sources ol { margin: 0; padding-inline-start: 1.25rem; }
+  .article-sources li { margin-bottom: 1rem; padding-inline-start: .35rem; color: var(--muted); font-size: .88rem; }
+  .article-sources a { display: inline; font-weight: 850; }
+  .article-sources span { display: block; margin-top: .2rem; font-size: .76rem; }
+  .article-sources p { margin: .35rem 0 0; font-size: .82rem; }
   .definition { position: relative; margin: 2.5rem -2rem; border-radius: var(--radius); padding: 2.2rem; color: var(--paper); background: var(--navy); box-shadow: var(--shadow); }
   .definition::before { content: "“"; position: absolute; top: -.5rem; inset-inline-end: 1.2rem; color: var(--green); font-size: 7rem; line-height: 1; opacity: .8; }
   .definition small, .script-box small { display: block; margin-bottom: .7rem; font-family: Lato, sans-serif; font-size: .68rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; }

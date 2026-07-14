@@ -15,6 +15,13 @@ interface RelatedLink {
   label?: string;
 }
 
+interface SourceLink {
+  title: string;
+  href: string;
+  publisher?: string;
+  note?: string;
+}
+
 interface Props {
   title: string;
   seoTitle?: string;
@@ -27,6 +34,7 @@ interface Props {
   readTime: string;
   keywords?: string[];
   showToc?: boolean;
+  sources?: SourceLink[];
   headings?: Heading[];
   related?: RelatedLink[];
   collectionLabel: string;
@@ -47,6 +55,7 @@ const {
   readTime,
   keywords = [],
   showToc = true,
+  sources = [],
   headings = [],
   related = [],
   collectionLabel,
@@ -68,6 +77,14 @@ const articleSchema = {
   publisher: { '@id': new URL('/#organisation', site).toString() },
   articleSection: eyebrow,
   ...(keywords.length > 0 ? { keywords } : {}),
+  ...(sources.length > 0 ? {
+    citation: sources.map((source) => ({
+      '@type': 'CreativeWork',
+      name: source.title,
+      url: source.href,
+      ...(source.publisher ? { publisher: { '@type': 'Organization', name: source.publisher } } : {})
+    }))
+  } : {}),
   mainEntityOfPage: canonical
 };
 const breadcrumbSchema = {
@@ -127,6 +144,20 @@ const hasContents = showToc && tableHeadings.length > 0;
       )}
       <article class="article-body prose">
         <slot />
+        {sources.length > 0 && (
+          <footer class="article-sources" aria-labelledby="article-sources-heading">
+            <h2 id="article-sources-heading">Sources and further reading</h2>
+            <ol>
+              {sources.map((source) => (
+                <li>
+                  <a href={source.href}>{source.title}</a>
+                  {source.publisher && <span>{source.publisher}</span>}
+                  {source.note && <p>{source.note}</p>}
+                </li>
+              ))}
+            </ol>
+          </footer>
+        )}
       </article>
       <aside class="article-share" aria-label="Share this page">
         <strong>Share</strong>

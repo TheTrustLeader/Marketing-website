@@ -18,6 +18,12 @@ keywords:
   - "manipulation warning signs"
   - "trust at work"
 showToc: true
+evidenceReview: "complete"
+sources:
+  - title: "Harnessing the Science of Persuasion"
+    href: "https://hbr.org/2001/10/harnessing-the-science-of-persuasion"
+    publisher: "Harvard Business Review"
+    note: "Robert B. Cialdini's account of six established principles of persuasion."
 related:
   - href: "/articles/authority-is-not-trust/"
     title: "Authority is not trust"
@@ -36,7 +42,7 @@ So what separates them?
 
 ## It isn't the technique
 
-The usual answer is that manipulation uses tricks and influence doesn't. That doesn't hold up. The well-known principles of influence — scarcity, social proof, authority, commitment — aren't sinister in themselves. Telling people a workshop has ten places because it genuinely has ten places is scarcity, and it's honest. Pointing to real customers who are happy is social proof, and it's fair. The same principle can be used well or badly. The technique doesn't decide which.
+The usual answer is that manipulation uses tricks and influence doesn't. That doesn't hold up. Robert B. Cialdini's well-known principles of influence — including scarcity, social proof, authority and commitment — aren't sinister in themselves. Telling people a workshop has ten places because it genuinely has ten places is scarcity, and it's honest. Pointing to real customers who are happy is social proof, and it's fair. The same principle can be used well or badly. The technique doesn't decide which.
 
 What changes is how it's used. Influence tips into manipulation when it starts to pressure, conceal, exaggerate, or manufacture urgency. The scarcity is invented. The social proof is staged. The deadline exists only to stop you thinking. At that point you're not helping someone decide. You're trying to get past their judgement.
 

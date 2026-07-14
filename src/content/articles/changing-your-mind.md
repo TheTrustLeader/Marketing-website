@@ -18,6 +18,7 @@ keywords:
   - "explaining a change of decision"
   - "adaptability at work"
 showToc: true
+evidenceReview: "complete"
 related:
   - href: "/the-thinking/"
     title: "You do not decide if you are trusted"

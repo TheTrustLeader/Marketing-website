@@ -36,7 +36,29 @@ Content collection entries have `status: draft` or `status: published`.
 - Draft pages render in the review build but carry `noindex`.
 - Draft entries are excluded from `sitemap.xml` and the published sections of `llms.txt`.
 - Change a page to `published` only after copy, claims, sources and internal links are approved.
+- Every published entry must record a completed evidence review. This is a judgement, not a citation quota.
 - Netlify deploy previews and branch builds are `noindex` through `PUBLIC_ROBOTS_NOINDEX=true`.
+
+## Evidence and external-source policy
+
+External sources are included when they help a reader verify, understand or explore a claim. They must never be added merely to borrow prestige or create the appearance of an SEO strategy.
+
+During the evidence review, ask:
+
+1. Does the page make an empirical, historical, numerical or borrowed claim a reasonable reader may want to verify?
+2. Is there a primary or clearly authoritative source that supports the precise claim being made?
+3. Will the source add useful context without interrupting the article's voice?
+4. Is the idea Trust Leader's own model or interpretation? If so, label it clearly rather than attaching an unrelated external authority.
+
+When a source adds value:
+
+- prefer the original research, named researcher, university, professional body or official publication;
+- cite it close to the relevant claim, or use the optional visible **Sources and further reading** section when that serves the reader better;
+- use concise, descriptive link text and explain why the source is relevant;
+- keep trusted editorial citations as ordinary links; reserve `nofollow`, `sponsored` and `ugc` for the circumstances those attributes describe;
+- include the source in article structured data only when it is also visible to the reader.
+
+When no external source is needed, the evidence review can still be completed. Original Trust Leader reasoning, clearly presented as such, should not be padded with citations.
 
 ## Structured data
 
