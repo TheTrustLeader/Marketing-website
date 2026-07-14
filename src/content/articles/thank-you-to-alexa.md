@@ -43,4 +43,4 @@ This is where people get nervous about practising behaviour. It sounds like lear
 
 There's a knock-on effect too. Once you've deliberately turned your attention to a behaviour, you start noticing it, in yourself and in how people respond to you. It's the same reason you suddenly see a particular car everywhere the week you decide to buy one. Nothing changed out in the world. Your attention did.
 
-So whether you thank a smart speaker doesn't matter. What it reveals does. The behaviours you want available when it counts are the ones you keep alive when it doesn't. Nobody rises to the difficult moment. You fall back on what you've practised — and the empty road at midnight is where that gets decided.
+So whether you thank a smart speaker doesn't matter. What it reveals does. The behaviours you want available when it counts are the ones you keep alive when it doesn't. In a difficult moment, you're more likely to fall back on what you've practised — and the empty road at midnight is where that gets decided.
