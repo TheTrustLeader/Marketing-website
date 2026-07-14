@@ -31,7 +31,7 @@ npm run build
 
 ## Configuration
 
-Copy `.env.example` to `.env` to override the public site or Hub destinations. Both trial and sign-in currently default to `https://hub.thetrustleader.com/auth`. Keep separate trial and sign-in variables available so a dedicated sign-up route can be adopted without changing page components. Do not commit secrets.
+Copy `.env.example` to `.env` to override the public site or Hub destinations. Trial actions default to the verified registration deep link, `https://hub.thetrustleader.com/auth?mode=signup`, while sign-in actions default to `https://hub.thetrustleader.com/auth`. Keep the destinations separate so each authentication state remains explicit. Do not commit secrets.
 
 ## Preview deployment
 
