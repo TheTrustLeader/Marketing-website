@@ -1,4 +1,4 @@
+# Netlify creates deploy previews for pull requests against main.
 [build]
   command = "npm run build"
   publish = "dist"
-
