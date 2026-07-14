@@ -21,9 +21,13 @@ The site supports discovery through readable static HTML, descriptive routes, in
 | Trust vs psychological safety | difference between trust and psychological safety | psychological safety behaviours, interpersonal trust |
 | Direct, borrowed and system trust | direct borrowed system trust | institutional trust, swift trust, authority and trust |
 | Authenticity and trust | does authenticity build trust | authentic leadership and trust, intentions and behaviour |
+| Influence and manipulation | difference between influence and manipulation | ethical influence, manipulation warning signs, manufactured urgency |
+| Thank you to Alexa | how habits strengthen trust under pressure | behaviour under pressure, practising trustworthy behaviour |
+| Changing your mind | does changing your mind damage trust | leadership consistency, explaining a change of decision, adaptability at work |
 | Authority article | authority vs influence vs trust | compliance vs trust, confidence gap |
 | Qualification article | qualifications and client trust | borrowed trust, professional credibility |
 | Why people do not trust me | why don't people trust me | trustworthiness, intent vs perception |
+| What do they need to trust you with? | what do they need to trust you with | five Trust Questions, contextual trust, trust at work |
 
 ## Publication gate
 

@@ -9,7 +9,7 @@ The current implementation includes:
 - the Home page and responsive Maya–Daniel Trust Journey;
 - The thinking, How it works, For practitioners, Pricing and About pages;
 - searchable Knowledge Base and Articles landing pages;
-- ten source-led article and Knowledge Base drafts using shared content templates;
+- seven published articles and three Knowledge Base drafts using shared content templates;
 - Trust Telegraph and contact forms prepared for Netlify Forms;
 - search and AI-discovery controls, structured data and a generated sitemap;
 - consent-gated analytics support, shared navigation, footer, design tokens and accessibility foundations.
