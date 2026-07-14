@@ -1,0 +1,154 @@
+---
+const steps = [
+  {
+    label: 'One relationship',
+    title: 'Start with what matters',
+    text: 'Daniel’s targets depend on Maya’s delivery. She needs him to back her judgement instead of working around her.',
+    score: 2,
+    alt: 'Maya’s Trust Map journey begins with Daniel and the outcome she wants in their working relationship.'
+  },
+  {
+    label: 'Map',
+    title: 'See where confidence may be held back',
+    text: 'Maya maps her view of how Daniel currently experiences her. Delivery and Consistency is the clearest gap.',
+    score: 2,
+    alt: 'Maya’s Trust Map shows Delivery and Consistency as the lowest area, scored 2 out of 5.'
+  },
+  {
+    label: 'Focus',
+    title: 'Choose one behaviour',
+    text: 'Maya chooses Flag It Early: give progress updates and raise risks before Daniel has to chase.',
+    score: 2,
+    alt: 'Maya selects B5 Flag It Early as the behaviour she will practise with Daniel.'
+  },
+  {
+    label: 'Practise',
+    title: 'Act in the real relationship',
+    text: 'Three short activities turn the behaviour into something Maya can practise between sessions.',
+    score: 2,
+    alt: 'Maya’s playlist contains If Only, Early Warning and Red Flag Slalom.'
+  },
+  {
+    label: 'Reflect',
+    title: 'Record what happened',
+    text: 'Maya records what she tried and how Daniel responded. Her next coaching conversation has something specific to work with.',
+    score: 2,
+    alt: 'Maya records a private fictional reflection after practising with Daniel.'
+  },
+  {
+    label: 'Review',
+    title: 'See what moved',
+    text: 'At day 14, Delivery and Consistency moves from 2 to 3 in Maya’s own Trust Map. Early movement—not a verdict or guarantee.',
+    score: 3,
+    alt: 'Maya’s day-14 Trust Map shows Delivery and Consistency moving from 2 to 3.'
+  }
+];
+---
+
+<section class="journey-deck" aria-labelledby="journey-title" data-journey-deck data-steps={JSON.stringify(steps)}>
+  <div class="journey-deck__back" aria-hidden="true"></div>
+  <div class="journey-card">
+    <div class="journey-card__top">
+      <span class="sample-label">Fictional example</span>
+      <span class="journey-count" data-journey-count>Step 1 of 6</span>
+    </div>
+    <div class="journey-card__copy" aria-live="polite" aria-atomic="true">
+      <p class="journey-card__label" data-journey-label>{steps[0].label}</p>
+      <h2 id="journey-title" data-journey-title>{steps[0].title}</h2>
+      <p data-journey-text>{steps[0].text}</p>
+    </div>
+
+    <div class="product-panel" role="img" aria-label={steps[0].alt} data-product-panel>
+      <div class="product-panel__title">
+        <strong>Maya’s Trust Map</strong>
+        <span>Daniel · current view</span>
+      </div>
+      <div class="map-row">
+        <span>Clarity &amp; Honesty</span>
+        <span class="map-track"><span class="map-fill map-fill--three"></span></span>
+        <b>3</b>
+      </div>
+      <div class="map-row map-row--focus">
+        <span>Delivery &amp; Consistency</span>
+        <span class="map-track"><span class="map-fill map-fill--focus" data-focus-fill></span></span>
+        <b data-focus-score>2</b>
+      </div>
+      <div class="map-row">
+        <span>Capability &amp; Realism</span>
+        <span class="map-track"><span class="map-fill map-fill--three"></span></span>
+        <b>3</b>
+      </div>
+      <div class="map-row">
+        <span>Understanding &amp; Connection</span>
+        <span class="map-track"><span class="map-fill map-fill--three"></span></span>
+        <b>3</b>
+      </div>
+      <div class="map-row">
+        <span>Fairness &amp; Consideration</span>
+        <span class="map-track"><span class="map-fill map-fill--three"></span></span>
+        <b>3</b>
+      </div>
+      <small>Illustrative product panel</small>
+    </div>
+
+    <div class="journey-controls">
+      <button class="circle-button" type="button" data-journey-previous aria-label="Previous Trust Journey step">←</button>
+      <div class="journey-dots" role="group" aria-label="Choose a Trust Journey step">
+        {steps.map((step, index) => (
+          <button
+            class:list={['journey-dot', { 'is-active': index === 0 }]}
+            type="button"
+            data-journey-dot={index}
+            aria-label={`Show step ${index + 1}: ${step.title}`}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+          ></button>
+        ))}
+      </div>
+      <button class="circle-button" type="button" data-journey-next aria-label="Next Trust Journey step">→</button>
+    </div>
+  </div>
+  <p class="journey-disclosure">Fictional people and demonstration data. Shown for illustration only.</p>
+</section>
+
+<script>
+  const deck = document.querySelector('[data-journey-deck]');
+
+  if (deck instanceof HTMLElement) {
+    const steps = JSON.parse(deck.dataset.steps || '[]') as Array<{
+      label: string;
+      title: string;
+      text: string;
+      score: number;
+      alt: string;
+    }>;
+    let activeIndex = 0;
+    const count = deck.querySelector('[data-journey-count]');
+    const label = deck.querySelector('[data-journey-label]');
+    const title = deck.querySelector('[data-journey-title]');
+    const text = deck.querySelector('[data-journey-text]');
+    const panel = deck.querySelector('[data-product-panel]');
+    const focusFill = deck.querySelector('[data-focus-fill]');
+    const focusScore = deck.querySelector('[data-focus-score]');
+    const dots = [...deck.querySelectorAll('[data-journey-dot]')];
+
+    const showStep = (requestedIndex: number) => {
+      activeIndex = (requestedIndex + steps.length) % steps.length;
+      const step = steps[activeIndex];
+      if (count) count.textContent = `Step ${activeIndex + 1} of ${steps.length}`;
+      if (label) label.textContent = step.label;
+      if (title) title.textContent = step.title;
+      if (text) text.textContent = step.text;
+      if (panel) panel.setAttribute('aria-label', step.alt);
+      if (focusFill instanceof HTMLElement) focusFill.style.width = `${step.score * 20}%`;
+      if (focusScore) focusScore.textContent = String(step.score);
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('is-active', index === activeIndex);
+        dot.setAttribute('aria-pressed', String(index === activeIndex));
+      });
+    };
+
+    deck.querySelector('[data-journey-previous]')?.addEventListener('click', () => showStep(activeIndex - 1));
+    deck.querySelector('[data-journey-next]')?.addEventListener('click', () => showStep(activeIndex + 1));
+    dots.forEach((dot, index) => dot.addEventListener('click', () => showStep(index)));
+  }
+</script>

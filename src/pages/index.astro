@@ -1,0 +1,140 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JourneyDeck from '@/components/JourneyDeck.astro';
+import TelegraphCTA from '@/components/TelegraphCTA.astro';
+import { siteConfig } from '@/config/site';
+
+const title = 'Trust Leader — Turn trust into behaviour people can practise';
+const description =
+  'Help your clients strengthen the trust their work depends on with a practical Trust Map, focused behaviours and evidence from real working relationships.';
+---
+
+<BaseLayout title={title} description={description} pageClass="home-page">
+  <section class="hero">
+    <div class="shell hero__grid">
+      <div class="hero__copy">
+        <p class="eyebrow">Trust Leader for practitioners</p>
+        <h1>Help your clients strengthen the trust their work depends on.</h1>
+        <p class="lede">Turn a difficult, human subject into specific behaviours people can practise with someone they need to work with.</p>
+        <div class="hero__actions">
+          <a class="button button--green" href={siteConfig.trialUrl}>Start your 28-day free trial</a>
+          <a class="button button--outline" href="#sample-journey">See Maya’s Trust Journey</a>
+        </div>
+        <p class="reassurance">28 days free. No credit card. No automatic subscription. You decide whether to continue.</p>
+      </div>
+      <div id="sample-journey">
+        <JourneyDeck />
+      </div>
+    </div>
+  </section>
+
+  <section class="proof-strip" aria-label="The 28-day trial structure">
+    <div class="shell proof-strip__grid">
+      <p>One real relationship. One clear focus. Practical evidence to bring back to the coaching conversation.</p>
+      <div><strong>01</strong><span>Trust Map</span></div>
+      <div><strong>01</strong><span>Behavioural focus</span></div>
+      <div><strong>28</strong><span>Days to practise</span></div>
+    </div>
+  </section>
+
+  <section class="section section--navy" id="how-it-works">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow eyebrow--light">From broad idea to useful action</p>
+          <h2>A structure for the human work.</h2>
+        </div>
+        <p>Trust Leader does not replace practitioner judgement. It gives the work a shared language, a practical next step and a dated record of what happened.</p>
+      </div>
+      <ol class="pathway">
+        <li>
+          <span>1</span>
+          <div><h3>Map the relationship</h3><p>Start with someone whose confidence matters and understand where it may be held back.</p></div>
+        </li>
+        <li>
+          <span>2</span>
+          <div><h3>Practise one behaviour</h3><p>Turn the conversation into action between sessions, in the relationship itself.</p></div>
+        </li>
+        <li>
+          <span>3</span>
+          <div><h3>Review the evidence</h3><p>Reflect, re-score and decide what the relationship needs next.</p></div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--green" id="practitioners">
+    <div class="shell practitioner-grid">
+      <div class="portrait-placeholder" role="img" aria-label="Placeholder for a natural photograph of Scott in a coaching or facilitation conversation">
+        <span>Approved photography to show Scott in a real coaching or facilitation conversation</span>
+      </div>
+      <div>
+        <p class="eyebrow">Made for practitioners</p>
+        <h2>Your judgement stays at the centre.</h2>
+        <p class="lede">Use Trust Leader to make trust work more specific without reducing a relationship to a score or personality label.</p>
+        <ul class="tick-list">
+          <li>Give clients a way to act between conversations.</li>
+          <li>Work with one important relationship at a time.</li>
+          <li>Bring real evidence—not vague intention—back into the room.</li>
+        </ul>
+        <a class="button" href="#trial">Explore Trust Leader for practitioners</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper" aria-labelledby="thinking-heading">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Thinking you can use</p>
+          <h2 id="thinking-heading">Practical ideas for difficult trust moments.</h2>
+        </div>
+        <p>Clear answers and useful language for coaches, consultants and people leading work through relationships.</p>
+      </div>
+      <div class="insight-layout">
+        <article class="feature-article">
+          <div class="feature-article__art" aria-hidden="true"><span>Why flagging a risk early strengthens delivery trust</span></div>
+          <div class="feature-article__body">
+            <p class="meta">Delivery &amp; Consistency · 7 min read</p>
+            <h3>A late surprise does more damage than a difficult early conversation.</h3>
+            <a class="text-link" href="/knowledge-base/flag-it-early/">Read the article</a>
+          </div>
+        </article>
+        <div class="article-list">
+          <article>
+            <p class="meta">Trust Map</p>
+            <h3>Five questions that make trust discussable</h3>
+            <p>Move from “Do they trust me?” to something you can actually work with.</p>
+            <a class="text-link" href="/knowledge-base/#trust-map">Explore the Trust Map</a>
+          </article>
+          <article>
+            <p class="meta">Coaching practice</p>
+            <h3>When a client says “communication is the problem”</h3>
+            <p>A sharper route from a general complaint to a behavioural choice.</p>
+            <a class="text-link" href="/knowledge-base/#behaviours">Browse trust behaviours</a>
+          </article>
+          <article>
+            <p class="meta">Evidence</p>
+            <h3>What counts as movement in a relationship?</h3>
+            <p>Look for dated signs of change, not certainty or a final verdict.</p>
+            <a class="text-link" href="/knowledge-base/#reflect-review">Explore reflection and review</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="trust-telegraph-section">
+    <div class="shell"><TelegraphCTA /></div>
+  </section>
+
+  <section class="section section--trial" id="trial">
+    <div class="shell trial-block">
+      <p class="eyebrow">Start with one relationship</p>
+      <h2>Take the first 28-day Trust Journey.</h2>
+      <p>Map one working relationship, choose one useful behaviour and build evidence through practice.</p>
+      <a class="button button--green" href={siteConfig.trialUrl}>Start your 28-day free trial</a>
+      <small>The direct Hub registration route will be added before release.</small>
+    </div>
+  </section>
+</BaseLayout>

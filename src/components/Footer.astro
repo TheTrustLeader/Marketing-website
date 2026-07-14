@@ -1,0 +1,34 @@
+---
+import Brand from './Brand.astro';
+import { siteConfig } from '@/config/site';
+---
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="site-footer__grid">
+      <div>
+        <Brand inverse />
+        <p class="site-footer__summary">Structure, practice and evidence for the trust work practitioners already do.</p>
+      </div>
+      <div>
+        <h2>Explore</h2>
+        <a href="/#how-it-works">How it works</a>
+        <a href="/#practitioners">For practitioners</a>
+        <a href="/knowledge-base/">Knowledge Base</a>
+      </div>
+      <div>
+        <h2>Connect</h2>
+        <a href={siteConfig.telegraphUrl}>Trust Telegraph</a>
+        <span class="site-footer__pending">About page pending</span>
+        <span class="site-footer__pending">Contact route pending</span>
+      </div>
+      <div>
+        <h2>Account</h2>
+        <a href={siteConfig.trialUrl}>Start free trial</a>
+        {siteConfig.signInUrl ? <a href={siteConfig.signInUrl}>Sign in</a> : <span class="site-footer__pending">Sign in route pending</span>}
+        <span class="site-footer__pending">Privacy route pending</span>
+      </div>
+    </div>
+    <p class="site-footer__legal">© {new Date().getFullYear()} Trust Leader. Initial implementation draft; final links, imagery and legal routes are pending approval.</p>
+  </div>
+</footer>

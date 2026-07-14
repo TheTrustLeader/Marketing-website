@@ -1,0 +1,114 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/config/site';
+
+const title = 'Why flagging a risk early strengthens delivery trust — Trust Leader';
+const description =
+  'An early warning gives the other person choices. Learn how to raise a risk clearly and strengthen confidence through Delivery and Consistency.';
+const articleData = {
+  author: 'Scott Ward',
+  publishedTime: '2026-07-14T09:00:00+01:00',
+  modifiedTime: '2026-07-14T09:00:00+01:00'
+};
+---
+
+<BaseLayout title={title} description={description} pageClass="article-page" article={articleData}>
+  <nav class="shell breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">›</span>
+    <a href="/knowledge-base/">Knowledge Base</a><span aria-hidden="true">›</span>
+    <span aria-current="page">Delivery and Consistency</span>
+  </nav>
+
+  <header class="article-hero">
+    <div class="shell article-hero__grid">
+      <div>
+        <p class="eyebrow">Delivery &amp; Consistency</p>
+        <h1>Why flagging a risk early strengthens delivery trust.</h1>
+        <p class="lede">A late surprise makes the other person carry uncertainty they could have planned for. An early warning gives them choices.</p>
+        <p class="article-meta"><span>Draft for review</span><span>By Scott Ward</span><span>7 minute read</span></p>
+      </div>
+      <div class="signal-visual" role="img" aria-label="A risk is seen and flagged early, allowing the plan to change">
+        <span class="signal-line signal-line--one"></span>
+        <span class="signal-line signal-line--two"></span>
+        <span class="signal-line signal-line--three"></span>
+        <span class="signal-node signal-node--one">Risk<br />seen</span>
+        <span class="signal-node signal-node--two">Flag<br />early</span>
+        <span class="signal-node signal-node--three">Plan<br />changes</span>
+        <blockquote>“The issue is rarely that the news was difficult. It is that the other person heard it too late to act.”</blockquote>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section--paper article-section">
+    <div class="shell article-layout">
+      <aside class="article-contents" aria-label="On this page">
+        <strong>On this page</strong>
+        <a href="#what-changes">What changes</a>
+        <a href="#why-delay">Why people delay</a>
+        <a href="#useful-warning">A useful warning</a>
+        <a href="#practise">How to practise</a>
+      </aside>
+
+      <article class="article-body">
+        <p>You know on Tuesday that Friday’s date is in trouble. You wait until Thursday, hoping to recover it. The work does not recover. Now the delay and the lack of warning arrive together.</p>
+        <p>For the person depending on you, that combination matters. They have less time to adapt and a new reason to question what your next update really means.</p>
+
+        <aside class="definition" aria-label="Trust Leader definition">
+          <small>The Trust Leader definition</small>
+          <p>Trust is someone’s confidence in you with something they care about.</p>
+        </aside>
+
+        <h2 id="what-changes">What changes when you flag it early?</h2>
+        <p>An early warning does not make a problem disappear. It changes what the other person can do with it. They can adjust a deadline, move a dependency, change the scope or ask for help while there is still room to act.</p>
+        <p>That is why this is about more than communication style. It is evidence about whether someone can depend on you when the plan becomes less comfortable.</p>
+
+        <h2 id="why-delay">Why capable people still delay</h2>
+        <p>Most people do not hide a risk because they want to create a surprise. They are trying to protect the relationship, their reputation or the possibility that they can still fix it.</p>
+        <p>The intention may be understandable. The effect can still erode confidence. Silence transfers the risk to the other person without giving them the information they need.</p>
+
+        <aside class="script-box" aria-label="Suggested wording">
+          <small>Language to try</small>
+          <p>“I’m seeing a risk to Friday. It is not certain yet, but I want you to have it early. By tomorrow I can confirm whether we need to move the date or reduce the scope.”</p>
+        </aside>
+
+        <h2 id="useful-warning">A useful early warning has four parts</h2>
+        <ol class="practice-list">
+          <li><div><strong>Name the risk plainly.</strong><p>Say what may not happen, without burying the point.</p></div></li>
+          <li><div><strong>Say what is known and unknown.</strong><p>Do not manufacture certainty to make the update sound stronger.</p></div></li>
+          <li><div><strong>Explain the likely effect.</strong><p>Connect the risk to the thing the other person cares about.</p></div></li>
+          <li><div><strong>Give the next decision point.</strong><p>Say when you will update them and what options are available now.</p></div></li>
+        </ol>
+
+        <h2 id="practise">Turn the insight into practice</h2>
+        <p>Choose one relationship where you tend to wait until the answer is complete. For one week, notice the moment a meaningful risk first becomes visible. Raise it before you have solved it.</p>
+        <p>Then record what happened. Did the other person react to the difficulty, the timing or both? What became possible because they knew earlier?</p>
+        <p><strong>Purpose is the anchor. The Trust Map is the application. Practice builds the evidence.</strong></p>
+
+        <aside class="article-cta" aria-labelledby="article-telegraph-heading">
+          <h2 id="article-telegraph-heading">Want one useful idea like this each week?</h2>
+          <p>Trust Telegraph is for people whose work depends on other people’s confidence.</p>
+          <a class="button button--yellow" href={siteConfig.telegraphUrl}>Join Trust Telegraph</a>
+        </aside>
+      </article>
+
+      <aside class="article-share" aria-label="Share this article">
+        <strong>Share</strong>
+        <a href={Astro.url.pathname} aria-label="Copy or share this article link">↗</a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="related-heading">
+    <div class="shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">Continue exploring</p><h2 id="related-heading">Related ways into the work.</h2></div>
+        <a class="button button--outline" href="/knowledge-base/">Browse the Knowledge Base</a>
+      </div>
+      <div class="related-grid">
+        <article><p class="meta">Trust behaviour</p><h3>B5 · Flag It Early</h3><p>Give updates on progress and raise issues early when there are risks or delays.</p><a class="text-link" href="/knowledge-base/#behaviours">Explore the behaviour</a></article>
+        <article><p class="meta">Activity</p><h3>Early Warning</h3><p>Practise raising a live risk while the other person still has useful choices.</p><a class="text-link" href="/knowledge-base/#walkthroughs">See the activity route</a></article>
+        <article><p class="meta">Platform</p><h3>Map Delivery &amp; Consistency</h3><p>See how a Trust Map turns a broad concern into one practical focus.</p><a class="text-link" href="/#sample-journey">See how it works</a></article>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

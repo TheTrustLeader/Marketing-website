@@ -1,0 +1,22 @@
+---
+import { siteConfig } from '@/config/site';
+
+interface Props {
+  heading?: string;
+  text?: string;
+}
+
+const {
+  heading = 'One useful idea about trust, in your inbox.',
+  text = 'Short, practical thinking for people whose work depends on other people’s confidence.'
+} = Astro.props;
+---
+
+<section class="telegraph" id="trust-telegraph" aria-labelledby="telegraph-heading">
+  <div>
+    <p class="eyebrow eyebrow--light">Trust Telegraph</p>
+    <h2 id="telegraph-heading">{heading}</h2>
+    <p>{text}</p>
+  </div>
+  <a class="button button--yellow" href={siteConfig.telegraphUrl}>Join Trust Telegraph</a>
+</section>

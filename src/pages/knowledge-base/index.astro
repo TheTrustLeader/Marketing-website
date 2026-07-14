@@ -1,0 +1,97 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TelegraphCTA from '@/components/TelegraphCTA.astro';
+
+const title = 'Knowledge Base — Trust Leader';
+const description =
+  'Clear explanations, activity guidance and useful language for trust work in real relationships.';
+
+const topics = [
+  { id: 'understand', number: '01', heading: 'Understand trust', text: 'Definitions, common misconceptions and the five areas of the Trust Map.', link: '#popular' },
+  { id: 'trust-map', number: '02', heading: 'Map a relationship', text: 'Choose a person, answer the Trust Questions and interpret the result carefully.', link: '#walkthroughs' },
+  { id: 'behaviours', number: '03', heading: 'Choose a behaviour', text: 'Move from a broad concern to one behaviour that can make a useful difference.', link: '/knowledge-base/flag-it-early/' },
+  { id: 'practise', number: '04', heading: 'Practise in real work', text: 'Use activities to try something different in the relationship—not just on screen.', link: '#walkthroughs' },
+  { id: 'reflect-review', number: '05', heading: 'Reflect and review', text: 'Record what happened, notice evidence and decide what to do next.', link: '#popular' },
+  { id: 'platform', number: '06', heading: 'Use the platform', text: 'Short, task-based walkthroughs for accounts, journeys, playlists and settings.', link: '#walkthroughs' }
+];
+---
+
+<BaseLayout title={title} description={description} pageClass="knowledge-page">
+  <section class="kb-hero">
+    <div class="shell kb-hero__grid">
+      <div>
+        <p class="eyebrow">Trust Leader Knowledge Base</p>
+        <h1>Practical answers for trust work.</h1>
+        <p class="lede">Find clear explanations, activity guidance and useful language for the relationship in front of you.</p>
+        <form class="search-box" role="search" action="/knowledge-base/" method="get">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m16.2 16.2 4 4"></path></svg>
+          <label class="visually-hidden" for="knowledge-search">Search the Knowledge Base</label>
+          <input id="knowledge-search" name="q" type="search" placeholder="Search a question, behaviour or activity" />
+          <button class="button button--small" type="submit">Search</button>
+        </form>
+      </div>
+      <aside class="kb-note" aria-label="Getting started">
+        <strong>Not sure where to start?</strong>
+        <p>The Trust Map helps you find a practical focus. The Knowledge Base helps you understand and act on it.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="browse-heading">
+    <div class="shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">Browse by need</p><h2 id="browse-heading">Start with the question you have.</h2></div>
+        <p>Arrive through a real question, find a plain answer and see where Trust Leader can support the work.</p>
+      </div>
+      <div class="topic-grid">
+        {topics.map((topic) => (
+          <article class="topic" id={topic.id}>
+            <span class="topic__number">{topic.number}</span>
+            <h3>{topic.heading}</h3>
+            <p>{topic.text}</p>
+            <a class="text-link" href={topic.link}>Explore this topic</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper" id="walkthroughs" aria-labelledby="walkthrough-heading">
+    <div class="shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">Guided walkthroughs</p><h2 id="walkthrough-heading">See the task. Then do it.</h2></div>
+        <p>Short click-through product guidance belongs here, where a visitor has a task to complete.</p>
+      </div>
+      <div class="guide-grid">
+        <article class="guide-card">
+          <div class="guide-card__visual" aria-hidden="true"><span>▶</span></div>
+          <div><p class="meta">2-minute walkthrough</p><h3>Create your first Trust Map</h3><p>From choosing the relationship to identifying a focus.</p><span class="pending-link">Interactive guide pending product capture</span></div>
+        </article>
+        <article class="guide-card">
+          <div class="guide-card__visual" aria-hidden="true"><span>↗</span></div>
+          <div><p class="meta">90-second walkthrough</p><h3>Add an activity to a playlist</h3><p>Choose an activity that fits the behaviour and the real situation.</p><span class="pending-link">Interactive guide pending product capture</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="popular" aria-labelledby="popular-heading">
+    <div class="shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">Frequently useful</p><h2 id="popular-heading">Answers people return to.</h2></div>
+      </div>
+      <div class="popular-list">
+        <a href="/knowledge-base/flag-it-early/"><span>01</span><strong>Why flagging a risk early strengthens delivery trust</strong><em>Use a difficult update to create confidence rather than erode it.</em><b aria-hidden="true">→</b></a>
+        <a href="#trust-map"><span>02</span><strong>Is a Trust Map a diagnostic?</strong><em>No. It is one person’s structured view of a relationship.</em><b aria-hidden="true">→</b></a>
+        <a href="#reflect-review"><span>03</span><strong>What should I write in a reflection?</strong><em>Record what you tried, what happened and what you noticed.</em><b aria-hidden="true">→</b></a>
+        <a href="#behaviours"><span>04</span><strong>How do I choose one focus?</strong><em>Look for the behaviour with the most useful relationship-level leverage.</em><b aria-hidden="true">→</b></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--green">
+    <div class="shell">
+      <TelegraphCTA heading="Useful thinking beyond the how-to." text="Join practitioners exploring how confidence strengthens and erodes in real working relationships." />
+    </div>
+  </section>
+</BaseLayout>

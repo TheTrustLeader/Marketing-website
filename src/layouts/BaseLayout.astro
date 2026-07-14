@@ -1,0 +1,56 @@
+---
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  pageClass?: string;
+  image?: string;
+  article?: {
+    author: string;
+    publishedTime: string;
+    modifiedTime: string;
+  };
+}
+
+const { title, description, pageClass = '', image, article } = Astro.props;
+const configuredSite = import.meta.env.PUBLIC_SITE_URL;
+const canonical = configuredSite
+  ? new URL(Astro.url.pathname, configuredSite).toString()
+  : undefined;
+const socialImage = image && configuredSite ? new URL(image, configuredSite).toString() : undefined;
+---
+
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#2B3354" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    {article && <meta property="article:author" content={article.author} />}
+    {article && <meta property="article:published_time" content={article.publishedTime} />}
+    {article && <meta property="article:modified_time" content={article.modifiedTime} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>{title}</title>
+    <slot name="head" />
+  </head>
+  <body class={pageClass}>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
