@@ -1,22 +1,28 @@
 ---
-import { siteConfig } from '@/config/site';
+import { getSiteConfig } from '@/config/site';
+import { defaultLocale, type EnabledLocale } from '@/i18n/config';
+import { getMessages } from '@/i18n/messages';
 
 interface Props {
   heading?: string;
   text?: string;
+  locale?: EnabledLocale;
 }
 
+const { locale = defaultLocale } = Astro.props;
+const siteConfig = getSiteConfig(locale);
+const messages = getMessages(locale);
 const {
-  heading = 'One useful idea about trust, in your inbox.',
-  text = 'Short, practical thinking for people whose work depends on other people’s confidence.'
+  heading = messages.telegraph.heading,
+  text = messages.telegraph.text
 } = Astro.props;
 ---
 
 <section class="telegraph" id="trust-telegraph" aria-labelledby="telegraph-heading">
   <div>
-    <p class="eyebrow eyebrow--light">Trust Telegraph</p>
+    <p class="eyebrow eyebrow--light">{messages.telegraph.eyebrow}</p>
     <h2 id="telegraph-heading">{heading}</h2>
     <p>{text}</p>
   </div>
-  <a class="button button--yellow" href={siteConfig.telegraphUrl}>Join Trust Telegraph</a>
+  <a class="button button--yellow" href={siteConfig.telegraphUrl}>{messages.telegraph.action}</a>
 </section>

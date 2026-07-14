@@ -1,34 +1,44 @@
 ---
 import Brand from './Brand.astro';
-import { siteConfig } from '@/config/site';
+import { getSiteConfig } from '@/config/site';
+import { defaultLocale, localisePath, type EnabledLocale } from '@/i18n/config';
+import { getMessages } from '@/i18n/messages';
+
+interface Props {
+  locale?: EnabledLocale;
+}
+
+const { locale = defaultLocale } = Astro.props;
+const siteConfig = getSiteConfig(locale);
+const messages = getMessages(locale);
 ---
 
 <footer class="site-footer">
   <div class="shell">
     <div class="site-footer__grid">
       <div>
-        <Brand inverse />
-        <p class="site-footer__summary">Structure, practice and evidence for the trust work practitioners already do.</p>
+        <Brand inverse locale={locale} />
+        <p class="site-footer__summary">{messages.footer.summary}</p>
       </div>
       <div>
-        <h2>Explore</h2>
-        <a href="/#how-it-works">How it works</a>
-        <a href="/#practitioners">For practitioners</a>
-        <a href="/knowledge-base/">Knowledge Base</a>
+        <h2>{messages.footer.explore}</h2>
+        <a href={localisePath('/#how-it-works', locale)}>{messages.navigation.howItWorks}</a>
+        <a href={localisePath('/#practitioners', locale)}>{messages.navigation.practitioners}</a>
+        <a href={localisePath('/knowledge-base/', locale)}>{messages.navigation.knowledgeBase}</a>
       </div>
       <div>
-        <h2>Connect</h2>
-        <a href={siteConfig.telegraphUrl}>Trust Telegraph</a>
-        <span class="site-footer__pending">About page pending</span>
-        <span class="site-footer__pending">Contact route pending</span>
+        <h2>{messages.footer.connect}</h2>
+        <a href={siteConfig.telegraphUrl}>{messages.telegraph.eyebrow}</a>
+        <span class="site-footer__pending">{messages.footer.aboutPending}</span>
+        <span class="site-footer__pending">{messages.footer.contactPending}</span>
       </div>
       <div>
-        <h2>Account</h2>
-        <a href={siteConfig.trialUrl}>Start free trial</a>
-        {siteConfig.signInUrl ? <a href={siteConfig.signInUrl}>Sign in</a> : <span class="site-footer__pending">Sign in route pending</span>}
-        <span class="site-footer__pending">Privacy route pending</span>
+        <h2>{messages.footer.account}</h2>
+        <a href={siteConfig.trialUrl}>{messages.navigation.startTrial}</a>
+        {siteConfig.signInUrl ? <a href={siteConfig.signInUrl}>{messages.navigation.signIn}</a> : <span class="site-footer__pending">{messages.navigation.signInPendingTitle}</span>}
+        <span class="site-footer__pending">{messages.footer.privacyPending}</span>
       </div>
     </div>
-    <p class="site-footer__legal">© {new Date().getFullYear()} Trust Leader. Initial implementation draft; final links, imagery and legal routes are pending approval.</p>
+    <p class="site-footer__legal">© {new Date().getFullYear()} {messages.footer.legal}</p>
   </div>
 </footer>

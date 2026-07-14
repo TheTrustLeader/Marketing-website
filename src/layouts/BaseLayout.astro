@@ -1,6 +1,13 @@
 ---
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import {
+  defaultLocale,
+  getLocaleConfig,
+  type EnabledLocale,
+  type Locale
+} from '@/i18n/config';
+import { getMessages } from '@/i18n/messages';
 import '@/styles/global.css';
 
 interface Props {
@@ -8,6 +15,8 @@ interface Props {
   description: string;
   pageClass?: string;
   image?: string;
+  locale?: EnabledLocale;
+  translations?: Partial<Record<Locale, string>>;
   article?: {
     author: string;
     publishedTime: string;
@@ -15,16 +24,35 @@ interface Props {
   };
 }
 
-const { title, description, pageClass = '', image, article } = Astro.props;
+const {
+  title,
+  description,
+  pageClass = '',
+  image,
+  locale = defaultLocale,
+  translations = {},
+  article
+} = Astro.props;
+const localeDefinition = getLocaleConfig(locale);
+const messages = getMessages(locale);
 const configuredSite = import.meta.env.PUBLIC_SITE_URL;
 const canonical = configuredSite
   ? new URL(Astro.url.pathname, configuredSite).toString()
   : undefined;
 const socialImage = image && configuredSite ? new URL(image, configuredSite).toString() : undefined;
+const alternateLinks = configuredSite
+  ? Object.entries(translations).map(([alternateLocale, path]) => ({
+      hreflang: getLocaleConfig(alternateLocale as Locale).htmlLang,
+      href: new URL(path, configuredSite).toString()
+    }))
+  : [];
+const defaultAlternate = configuredSite && translations[defaultLocale]
+  ? new URL(translations[defaultLocale], configuredSite).toString()
+  : undefined;
 ---
 
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang={localeDefinition.htmlLang} dir={localeDefinition.direction} data-locale={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -33,7 +61,10 @@ const socialImage = image && configuredSite ? new URL(image, configuredSite).toS
     <meta name="theme-color" content="#2B3354" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     {canonical && <link rel="canonical" href={canonical} />}
+    {alternateLinks.map(({ hreflang, href }) => <link rel="alternate" hreflang={hreflang} href={href} />)}
+    {defaultAlternate && <link rel="alternate" hreflang="x-default" href={defaultAlternate} />}
     <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:locale" content={localeDefinition.openGraphLocale} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     {canonical && <meta property="og:url" content={canonical} />}
@@ -46,11 +77,11 @@ const socialImage = image && configuredSite ? new URL(image, configuredSite).toS
     <slot name="head" />
   </head>
   <body class={pageClass}>
-    <a class="skip-link" href="#main-content">Skip to content</a>
-    <Header />
+    <a class="skip-link" href="#main-content">{messages.skipToContent}</a>
+    <Header locale={locale} />
     <main id="main-content">
       <slot />
     </main>
-    <Footer />
+    <Footer locale={locale} />
   </body>
 </html>

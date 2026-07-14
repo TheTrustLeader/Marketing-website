@@ -1,29 +1,39 @@
 ---
 import Brand from './Brand.astro';
-import { siteConfig } from '@/config/site';
+import { getSiteConfig } from '@/config/site';
+import { defaultLocale, localisePath, type EnabledLocale } from '@/i18n/config';
+import { getMessages } from '@/i18n/messages';
 
+interface Props {
+  locale?: EnabledLocale;
+}
+
+const { locale = defaultLocale } = Astro.props;
+const siteConfig = getSiteConfig(locale);
+const messages = getMessages(locale);
 const pathname = Astro.url.pathname;
-const isKnowledge = pathname.startsWith('/knowledge-base');
+const knowledgePath = localisePath('/knowledge-base/', locale);
+const isKnowledge = pathname.startsWith(knowledgePath);
 ---
 
 <header class="site-header">
   <div class="shell site-header__inner">
-    <Brand />
+    <Brand locale={locale} />
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
-      <span class="menu-toggle__label">Menu</span>
+      <span class="menu-toggle__label">{messages.navigation.menu}</span>
       <span class="menu-toggle__icon" aria-hidden="true"></span>
     </button>
-    <nav class="site-nav" id="site-navigation" aria-label="Main navigation">
-      <a href="/#how-it-works">How it works</a>
-      <a href="/#practitioners">For practitioners</a>
-      <a href="/knowledge-base/" aria-current={isKnowledge ? 'page' : undefined}>Knowledge Base</a>
-      <span class="nav-pending" title="About page pending">About</span>
+    <nav class="site-nav" id="site-navigation" aria-label={messages.navigation.ariaLabel}>
+      <a href={localisePath('/#how-it-works', locale)}>{messages.navigation.howItWorks}</a>
+      <a href={localisePath('/#practitioners', locale)}>{messages.navigation.practitioners}</a>
+      <a href={knowledgePath} aria-current={isKnowledge ? 'page' : undefined}>{messages.navigation.knowledgeBase}</a>
+      <span class="nav-pending" title={messages.navigation.aboutPendingTitle}>{messages.navigation.about}</span>
     </nav>
     <div class="site-header__actions">
       {siteConfig.signInUrl
-        ? <a class="utility-link" href={siteConfig.signInUrl}>Sign in</a>
-        : <span class="utility-link utility-link--pending" title="Hub sign-in route pending">Sign in</span>}
-      <a class="button button--small button--green" href={siteConfig.trialUrl}>Start free trial</a>
+        ? <a class="utility-link" href={siteConfig.signInUrl}>{messages.navigation.signIn}</a>
+        : <span class="utility-link utility-link--pending" title={messages.navigation.signInPendingTitle}>{messages.navigation.signIn}</span>}
+      <a class="button button--small button--green" href={siteConfig.trialUrl}>{messages.navigation.startTrial}</a>
     </div>
   </div>
 </header>
