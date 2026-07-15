@@ -54,6 +54,7 @@ export interface SharedMessages {
     panelTitle: string;
     currentView: string;
     illustrativePanel: string;
+    instructions: string;
     disclosure: string;
     axes: [string, string, string, string, string];
     steps: JourneyStep[];
@@ -105,6 +106,7 @@ const en: SharedMessages = {
     panelTitle: 'Maya’s Trust Map',
     currentView: 'Daniel · current view',
     illustrativePanel: 'Illustrative product panel',
+    instructions: 'Follow Maya’s six-step Trust Journey. Use the arrows to see what changed.',
     disclosure: 'Fictional people and demonstration data. Shown for illustration only.',
     axes: [
       'Clarity & Honesty',

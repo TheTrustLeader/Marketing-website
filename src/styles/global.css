@@ -266,7 +266,8 @@
   .map-fill--focus { width: 40%; background: var(--yellow); transition: width .25s ease; }
   .map-row--focus { font-weight: 900; }
   .map-row--focus .map-track { box-shadow: 0 0 0 3px rgb(255 217 90 / 20%); }
-  .journey-controls { position: relative; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; gap: .8rem; margin-top: 1rem; }
+  .journey-instructions { position: relative; margin: .85rem 0 0; color: var(--muted); font-size: .76rem; text-align: center; }
+  .journey-controls { position: relative; display: grid; grid-template-columns: 44px 1fr 44px; align-items: center; gap: .8rem; margin-top: .65rem; }
   .circle-button { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; color: var(--navy); background: var(--paper); cursor: pointer; font-size: 1.2rem; font-weight: 900; }
   html[dir="rtl"] .circle-button { transform: scaleX(-1); }
   .journey-dots { display: flex; justify-content: center; gap: .35rem; }
