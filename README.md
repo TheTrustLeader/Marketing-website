@@ -11,7 +11,7 @@ The current implementation includes:
 - searchable Knowledge Base and Articles landing pages;
 - seven published articles and four published Knowledge Base guides using shared content templates;
 - a shared, on-brand graphic system for articles and editorial content;
-- a dedicated Samai-backed Certified Practitioner waitlist, plus Trust Telegraph and contact forms prepared for Netlify Forms;
+- dedicated Samai-backed Certified Practitioner waitlist and Trust Telegraph forms, plus a contact form prepared for Netlify Forms;
 - an approved Warsaw speaking photograph on the Home page;
 - search and AI-discovery controls, structured data and a generated sitemap;
 - consent-gated analytics support, shared navigation, footer, design tokens and accessibility foundations.
@@ -67,7 +67,7 @@ The repository includes a Netlify configuration for pull-request previews:
 
 Netlify builds the production branch and creates a separate, search-blocked preview for each pull request.
 
-Samai temporarily stores Certified Practitioner waitlist registrations and should apply the `certified-practitioner-waitlist` tag, preserve the consent record and notify the Trust Leader team. Trust Telegraph and contact submissions remain in Netlify Forms. The Relationship Engine does not become the source of truth until the migration mapping and intake route are tested.
+Samai temporarily stores Certified Practitioner waitlist registrations and Trust Telegraph subscriptions. It should apply the `certified-practitioner-waitlist` and `trust-telegraph-subscriber` tags respectively, preserve each consent record and notify the Trust Leader team. Contact submissions remain in Netlify Forms. The Relationship Engine does not become the source of truth until the migration mapping and intake route are tested.
 
 ## Content publication
 
