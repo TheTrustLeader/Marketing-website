@@ -7,10 +7,11 @@ author: "Scott Hunter"
 published: 2026-07-07
 updated: 2026-07-14
 readTime: "6 minute read"
-status: "draft"
+status: "published"
 accent: "green"
 featured: true
 searchIntent: "difference between trust and psychological safety"
+evidenceReview: "complete"
 related:
   - href: "/knowledge-base/direct-borrowed-and-system-trust/"
     title: "What are direct, borrowed and system trust?"
@@ -76,4 +77,3 @@ Psychological safety is not created by saying that it is safe to speak. It grows
 - [Amy Edmondson, “Psychological Safety and Learning Behavior in Work Teams” (1999)](https://doi.org/10.2307/2666999).
 - [Amy Edmondson, “Learning from Failure in Health Care” (2004)](https://doi.org/10.1136/qshc.2003.009597).
 - [CIPD, *Trust and psychological safety: An evidence review*](https://www.cipd.org/en/knowledge/evidence-reviews/trust-psychological-safety/).
-

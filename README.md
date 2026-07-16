@@ -9,7 +9,7 @@ The current implementation includes:
 - the Home page and responsive Maya–Daniel Trust Journey;
 - The thinking, How it works, For practitioners, Pricing and About pages;
 - searchable Knowledge Base and Articles landing pages;
-- seven published articles and three Knowledge Base drafts using shared content templates;
+- seven published articles and four published Knowledge Base guides using shared content templates;
 - a shared, on-brand graphic system for articles and editorial content;
 - a dedicated Certified Practitioner waitlist, plus Trust Telegraph and contact forms prepared for Netlify Forms;
 - an approved Warsaw speaking photograph on the Home page;

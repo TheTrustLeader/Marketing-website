@@ -24,10 +24,10 @@ export const GET: APIRoute = async ({ site }) => {
     '',
     '## Published knowledge pages',
     ...(knowledge.length ? knowledge.map((entry) => link(`/knowledge-base/${entry.id}/`, entry.data.title, entry.data.description)) : ['No Knowledge Base drafts are marked published yet.']),
+    link('/knowledge-base/flag-it-early/', 'Why flagging a risk early strengthens delivery trust', 'How to raise a risk while the other person still has useful choices.'),
     '',
     '## Published articles',
     ...(articles.length ? articles.map((entry) => link(`/articles/${entry.id}/`, entry.data.title, entry.data.description)) : ['No article drafts are marked published yet.'])
   ];
   return new Response(`${lines.join('\n')}\n`, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
 };
-

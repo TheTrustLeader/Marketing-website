@@ -7,10 +7,11 @@ author: "Scott Hunter"
 published: 2026-07-07
 updated: 2026-07-14
 readTime: "5 minute read"
-status: "draft"
+status: "published"
 accent: "yellow"
 featured: true
 searchIntent: "direct borrowed and system trust"
+evidenceReview: "complete"
 related:
   - href: "/articles/qualification-opens-the-door/"
     title: "Your qualification opens the door"
@@ -75,4 +76,3 @@ Direct, borrowed and system trust is a Trust Leader model. It has close neighbou
 
 - [McKnight, Cummings and Chervany, “Initial Trust Formation in New Organizational Relationships” (1998)](https://doi.org/10.2307/249951).
 - [Meyerson, Weick and Kramer, “Swift Trust and Temporary Groups” (1996)](https://www.researchgate.net/publication/239799552_Swift_Trust_and_Temporary_Groups).
-

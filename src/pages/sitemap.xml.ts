@@ -25,7 +25,8 @@ export const GET: APIRoute = async ({ site }) => {
   const routes = [
     ...coreRoutes.map((path) => ({ path, updated: '2026-07-14' })),
     ...articles.map((entry) => ({ path: `/articles/${entry.id}/`, updated: entry.data.updated.toISOString().slice(0, 10) })),
-    ...knowledge.map((entry) => ({ path: `/knowledge-base/${entry.id}/`, updated: entry.data.updated.toISOString().slice(0, 10) }))
+    ...knowledge.map((entry) => ({ path: `/knowledge-base/${entry.id}/`, updated: entry.data.updated.toISOString().slice(0, 10) })),
+    { path: '/knowledge-base/flag-it-early/', updated: '2026-07-14' }
   ];
   if (articles.length > 0) routes.push({ path: '/articles/', updated: '2026-07-14' });
   if (knowledge.length > 0) routes.push({ path: '/knowledge-base/', updated: '2026-07-14' });

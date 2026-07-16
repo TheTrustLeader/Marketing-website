@@ -47,20 +47,24 @@ const allDrafts = knowledgeEntries.every((entry) => entry.data.status !== 'publi
         <p>Each page leads with a direct answer, separates the Trust Leader model from research and links to the next useful question.</p>
       </div>
       <p class="search-results-status" data-search-status aria-live="polite"></p>
-      <div class="content-card-grid" data-content-list>
+      <div class="content-card-grid knowledge-card-grid" data-content-list>
         {knowledgeEntries.map((entry) => (
-          <article class:list={['content-card', `content-card--${entry.data.accent}`]} data-search-item={`${entry.data.title} ${entry.data.description} ${entry.data.eyebrow} ${entry.data.searchIntent}`.toLowerCase()}>
-            <div class="content-card__top"><span>{entry.data.eyebrow}</span>{entry.data.status !== 'published' && <b>Draft for review</b>}</div>
-            <h3><a href={`/knowledge-base/${entry.id}/`}>{entry.data.title}</a></h3>
-            <p>{entry.data.description}</p>
-            <div class="content-card__meta"><span>{entry.data.readTime}</span><a class="text-link" href={`/knowledge-base/${entry.id}/`}>Read the answer</a></div>
+          <article class:list={['content-card', 'knowledge-card', `content-card--${entry.data.accent}`]} data-search-item={`${entry.data.title} ${entry.data.description} ${entry.data.eyebrow} ${entry.data.searchIntent}`.toLowerCase()}>
+            <a class="knowledge-card__link" href={`/knowledge-base/${entry.id}/`}>
+              <span class="content-card__eyebrow">{entry.data.eyebrow}</span>
+              <h3>{entry.data.title}</h3>
+              <p>{entry.data.description}</p>
+              <span class="content-card__meta"><span>{entry.data.readTime}</span><strong>Read the answer <span aria-hidden="true">→</span></strong></span>
+            </a>
           </article>
         ))}
-        <article class="content-card content-card--yellow" data-search-item="flagging risk early delivery consistency behaviour activity early warning">
-          <div class="content-card__top"><span>Delivery &amp; Consistency</span><b>Example guide</b></div>
-          <h3><a href="/knowledge-base/flag-it-early/">Why flagging a risk early strengthens delivery trust</a></h3>
-          <p>Use a difficult early update to give the other person choices and reduce avoidable surprises.</p>
-          <div class="content-card__meta"><span>7 minute read</span><a class="text-link" href="/knowledge-base/flag-it-early/">Read the guide</a></div>
+        <article class="content-card knowledge-card content-card--yellow" data-search-item="flagging risk early delivery consistency behaviour activity early warning">
+          <a class="knowledge-card__link" href="/knowledge-base/flag-it-early/">
+            <span class="content-card__eyebrow">Delivery &amp; Consistency</span>
+            <h3>Why flagging a risk early strengthens delivery trust</h3>
+            <p>Use a difficult early update to give the other person choices and reduce avoidable surprises.</p>
+            <span class="content-card__meta"><span>7 minute read</span><strong>Read the guide <span aria-hidden="true">→</span></strong></span>
+          </a>
         </article>
       </div>
     </div>

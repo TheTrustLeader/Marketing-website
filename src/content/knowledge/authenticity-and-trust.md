@@ -7,10 +7,11 @@ author: "Scott Hunter"
 published: 2026-07-07
 updated: 2026-07-14
 readTime: "5 minute read"
-status: "draft"
+status: "published"
 accent: "navy"
 featured: true
 searchIntent: "does authenticity build trust"
+evidenceReview: "complete"
 related:
   - href: "/the-thinking/"
     title: "You do not decide if you are trusted"
@@ -79,4 +80,3 @@ You do not need to become a different person. You may need to deliver who you ar
 ## Source
 
 - [Herminia Ibarra, “The Authenticity Paradox”, *Harvard Business Review* (2015)](https://hbr.org/2015/01/the-authenticity-paradox).
-
