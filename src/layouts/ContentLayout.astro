@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import ArticleGraphic from '@/components/ArticleGraphic.astro';
 import TelegraphCTA from '@/components/TelegraphCTA.astro';
 
 interface Heading {
@@ -126,11 +127,7 @@ const hasContents = showToc && tableHeadings.length > 0;
           <time datetime={updated.toISOString()}>Updated {updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
         </p>
       </div>
-      <div class:list={['content-signal', `content-signal--${accent}`]} aria-hidden="true">
-        <span>{eyebrow}</span>
-        <strong>{title}</strong>
-        <i></i><i></i><i></i>
-      </div>
+      <ArticleGraphic title={title} eyebrow={eyebrow} accent={accent} />
     </div>
   </header>
 

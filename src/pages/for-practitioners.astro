@@ -4,7 +4,7 @@ import TrialCTA from '@/components/TrialCTA.astro';
 import { siteConfig } from '@/config/site';
 
 const title = 'Trust tools for coaches, consultants and L&D practitioners';
-const description = 'Trust Leader gives practitioners a Trust Map, between-session behaviour practice and dated evidence for work with clients and cohorts.';
+const description = 'Trust Leader gives practitioners a Trust Map, approved Behaviour Playlists, between-session practice and dated evidence for work with clients.';
 ---
 
 <BaseLayout title={`${title} — Trust Leader`} description={description} pageClass="practitioner-page">
@@ -13,15 +13,19 @@ const description = 'Trust Leader gives practitioners a Trust Map, between-sessi
       <div>
         <p class="eyebrow">For practitioners</p>
         <h1>Keep your judgement at the centre. Give the work more structure.</h1>
-        <p class="lede">You bring the client and the relationship. Trust Leader gives the work a map, practical action between conversations and evidence you can review together.</p>
+        <p class="lede">You bring the client, the judgement and the relationship. Trust Leader gives the work a map, approved behaviour practice between conversations and evidence you can review together.</p>
         <div class="hero__actions">
           <a class="button button--green" href={siteConfig.trialUrl} data-analytics="start_trial">Start your 28-day free trial</a>
           <a class="button button--outline" href="/how-it-works/">See how it works</a>
         </div>
       </div>
-      <div class="practitioner-signal" aria-label="Trust Leader supports structure, practice and evidence while practitioner judgement stays central">
-        <span>Structure</span><span>Practice</span><span>Evidence</span>
-        <strong>Your judgement</strong>
+      <div class="practitioner-proof practitioner-proof--hero" aria-label="Trust Leader keeps practitioner judgement central while adding structure, practice and evidence">
+        <div class="practitioner-proof__centre"><span>Practitioner</span><strong>Your judgement</strong><small>stays central</small></div>
+        <ol>
+          <li><span>01</span><strong>Structure</strong><small>Five Trust Questions.</small></li>
+          <li><span>02</span><strong>Practice</strong><small>Behaviour in real work.</small></li>
+          <li><span>03</span><strong>Evidence</strong><small>Dated reflection and review.</small></li>
+        </ol>
       </div>
     </div>
   </header>
@@ -49,7 +53,7 @@ const description = 'Trust Leader gives practitioners a Trust Map, between-sessi
       <div>
         <p class="eyebrow">Use it without becoming it</p>
         <h2>Trust Leader supports your approach. It does not replace it.</h2>
-        <p>The platform is good at providing a consistent structure, prompts for practice and a dated record. It cannot make the judgement a practitioner makes about the person, situation and pace.</p>
+        <p>The platform is good at providing a consistent structure, approved Behaviour Playlists and a dated record. It cannot make the judgement a practitioner makes about the person, situation and pace.</p>
         <p>Your client’s reflections and journals remain private by default. They choose what to bring back. That keeps the platform useful without turning the relationship into monitoring.</p>
       </div>
       <ul class="practice-outcomes">
@@ -66,8 +70,8 @@ const description = 'Trust Leader gives practitioners a Trust Map, between-sessi
       <div><p class="eyebrow">Start small, then grow</p><h2>Use the platform at the level your practice needs.</h2></div>
       <div class="growth-steps">
         <article><span>Trial</span><h3>Test one real relationship.</h3><p>28 days, no credit card and no automatic subscription.</p><a class="text-link" href={siteConfig.trialUrl} data-analytics="start_trial">Start free</a></article>
-        <article><span>Practitioner</span><h3>Work with your own clients.</h3><p>£75 a month with five client seats included.</p><a class="text-link" href="/pricing/">See pricing</a></article>
-        <article><span>Certification</span><h3>Design and co-brand.</h3><p>Founder offer planned at £995 one-off for the first 50 places.</p><a class="text-link" href="/contact/?topic=certification">Register interest</a></article>
+        <article><span>Practitioner</span><h3>Work with your own clients.</h3><p>£75 a month or £750 a year with five client seats. Your Practitioner account does not use a seat.</p><a class="text-link" href="/pricing/">See pricing</a></article>
+        <article><span>Certified Practitioner</span><h3>Create custom Behaviour Playlists.</h3><p>A separate pathway with 50 places in the founding cohort. Certification is not open for direct purchase.</p><a class="text-link" href={siteConfig.certifiedWaitlistUrl}>Join the Certified Practitioner waitlist</a></article>
         <article><span>Partner</span><h3>Run a larger programme.</h3><p>For consultancies, providers and organisation-wide use.</p><a class="text-link" href="/contact/?topic=partnership">Talk to us</a></article>
       </div>
     </div>
@@ -75,4 +79,3 @@ const description = 'Trust Leader gives practitioners a Trust Map, between-sessi
 
   <section class="section"><div class="shell"><TrialCTA text="28 days free. No card. Decide by using it with a real situation." /></div></section>
 </BaseLayout>
-

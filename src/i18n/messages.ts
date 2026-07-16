@@ -33,6 +33,7 @@ export interface SharedMessages {
     account: string;
     about: string;
     contact: string;
+    certifiedWaitlist: string;
     privacy: string;
     terms: string;
     cookies: string;
@@ -85,6 +86,7 @@ const en: SharedMessages = {
     account: 'Account',
     about: 'About',
     contact: 'Contact',
+    certifiedWaitlist: 'Certified Practitioner waitlist',
     privacy: 'Privacy',
     terms: 'Terms',
     cookies: 'Cookies',

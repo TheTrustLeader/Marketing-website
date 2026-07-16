@@ -1,0 +1,15 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/config/site';
+---
+
+<BaseLayout title="Certified Practitioner interest registered — Trust Leader" description="Your Certified Practitioner waitlist registration has been received." noindex>
+  <section class="section response-page">
+    <div class="shell response-card">
+      <p class="eyebrow">Interest registered</p>
+      <h1>Thank you. You are on the Certified Practitioner waitlist.</h1>
+      <p>Certification is not open. No payment has been taken and this does not reserve or guarantee a place. We will use the permission you selected to send material updates about the pathway and founding cohort.</p>
+      <div class="hero__actions"><a class="button button--green" href={siteConfig.trialUrl} data-analytics="start_trial_waitlist_thanks">Start the 28-day trial</a><a class="button button--outline" href="/for-practitioners/">Explore Practitioner membership</a></div>
+    </div>
+  </section>
+</BaseLayout>

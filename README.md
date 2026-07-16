@@ -10,7 +10,9 @@ The current implementation includes:
 - The thinking, How it works, For practitioners, Pricing and About pages;
 - searchable Knowledge Base and Articles landing pages;
 - seven published articles and three Knowledge Base drafts using shared content templates;
-- Trust Telegraph and contact forms prepared for Netlify Forms;
+- a shared, on-brand graphic system for articles and editorial content;
+- a dedicated Certified Practitioner waitlist, plus Trust Telegraph and contact forms prepared for Netlify Forms;
+- an approved Warsaw speaking photograph on the Home page;
 - search and AI-discovery controls, structured data and a generated sitemap;
 - consent-gated analytics support, shared navigation, footer, design tokens and accessibility foundations.
 
@@ -71,4 +73,4 @@ Article and Knowledge Base entries live in `src/content`. Each entry has a `draf
 
 ## Status
 
-This is an implementation draft. Product panels use safe fictional demonstration data and remain placeholders until approved platform captures are supplied. The portrait space also remains a placeholder. English is enabled; Arabic is planned but must not be presented as available yet.
+This is an implementation draft. Product panels use safe fictional demonstration data and remain placeholders until approved platform captures are supplied. English is enabled; Arabic is planned but must not be presented as available yet.

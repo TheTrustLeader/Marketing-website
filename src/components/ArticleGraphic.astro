@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  eyebrow: string;
+  accent?: 'green' | 'yellow' | 'navy';
+  variant?: number;
+}
+
+const { title, eyebrow, accent = 'green', variant } = Astro.props;
+const titleSeed = [...title].reduce((total, character) => total + character.codePointAt(0)!, 0);
+const graphicVariant = variant || (titleSeed % 4) + 1;
+---
+
+<div class:list={['article-art', `article-art--${accent}`, `article-art--v${graphicVariant}`]} aria-hidden="true">
+  <div class="article-art__topline">
+    <span>{String(graphicVariant).padStart(2, '0')}</span>
+    <b>{eyebrow}</b>
+  </div>
+  <div class="article-art__relationship">
+    <i class="article-art__person article-art__person--one"></i>
+    <i class="article-art__connection"></i>
+    <i class="article-art__person article-art__person--two"></i>
+  </div>
+  <div class="article-art__evidence">
+    <i></i><i></i><i></i><i></i><i></i>
+  </div>
+  <span class="article-art__caption">Person · situation · evidence</span>
+</div>

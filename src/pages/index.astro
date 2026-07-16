@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import ArticleGraphic from '@/components/ArticleGraphic.astro';
 import JourneyDeck from '@/components/JourneyDeck.astro';
 import TelegraphCTA from '@/components/TelegraphCTA.astro';
 import { siteConfig } from '@/config/site';
@@ -64,9 +65,10 @@ const description =
 
   <section class="section section--green" id="practitioners">
     <div class="shell practitioner-grid">
-      <div class="portrait-placeholder" role="img" aria-label="Placeholder for a natural photograph of Scott in a coaching or facilitation conversation">
-        <span>Approved photography to show Scott in a real coaching or facilitation conversation</span>
-      </div>
+      <figure class="founder-photo founder-photo--home">
+        <img src="/images/scott-hunter-hr-week-warsaw.webp" width="1800" height="1200" alt="Scott Hunter speaking about trust at HR Week in Warsaw" loading="lazy" />
+        <figcaption>Scott Hunter speaking at HR Week, Warsaw.</figcaption>
+      </figure>
       <div>
         <p class="eyebrow">Made for practitioners</p>
         <h2>Your judgement stays at the centre.</h2>
@@ -92,7 +94,7 @@ const description =
       </div>
       <div class="insight-layout">
         <article class="feature-article">
-          <div class="feature-article__art" aria-hidden="true"><span>Why flagging a risk early strengthens delivery trust</span></div>
+          <ArticleGraphic title="Why flagging a risk early strengthens delivery trust" eyebrow="Delivery & Consistency" accent="green" variant={2} />
           <div class="feature-article__body">
             <p class="meta">Delivery &amp; Consistency · 7 min read</p>
             <h3>A late surprise does more damage than a difficult early conversation.</h3>
