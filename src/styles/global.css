@@ -587,6 +587,9 @@
   .pricing-grid .pricing-card--featured h3, .pricing-grid .pricing-card--featured > strong { color: white; }
   .pricing-grid .pricing-card--featured > span, .pricing-grid .pricing-card--featured > strong small { color: var(--yellow); }
   .pricing-grid .pricing-card--featured p, .pricing-grid .pricing-card--featured ul { color: #d7d9e2; }
+  .pricing-card__actions { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1rem; }
+  .pricing-card__secondary { color: white; font-size: .88rem; font-weight: 850; text-underline-offset: 4px; }
+  .pricing-card__handoff { display: block; max-width: 38ch; margin-top: .9rem; color: #cfd2de; line-height: 1.45; }
   .founder-block { border-radius: 24px; padding: clamp(1.6rem, 5vw, 3rem); background: rgb(255 255 255 / 44%); }
   .seat-ladder { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
   .seat-ladder div { padding: 1.4rem; text-align: center; }

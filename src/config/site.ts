@@ -5,6 +5,9 @@ const hubAuthUrl =
 const hubTrialUrl =
   import.meta.env.PUBLIC_HUB_TRIAL_URL ||
   'https://hub.thetrustleader.com/auth?mode=signup';
+const hubPractitionerUrl =
+  import.meta.env.PUBLIC_HUB_PRACTITIONER_URL ||
+  'https://hub.thetrustleader.com/auth?mode=signup&next=%2Fupgrade';
 const hubLocaleParameter = import.meta.env.PUBLIC_HUB_LOCALE_PARAM;
 
 function withLocale(url: string, locale: EnabledLocale): string {
@@ -21,6 +24,7 @@ export function getSiteConfig(locale: EnabledLocale = defaultLocale) {
     description:
       'Trust Leader helps practitioners turn trust from a broad idea into specific behaviours people can practise in real working relationships.',
     trialUrl: withLocale(hubTrialUrl, locale),
+    practitionerUrl: withLocale(hubPractitionerUrl, locale),
     signInUrl: withLocale(import.meta.env.PUBLIC_HUB_SIGN_IN_URL || hubAuthUrl, locale),
     telegraphUrl: localisePath('/trust-telegraph/', locale),
     certifiedWaitlistUrl: localisePath('/certified-practitioner-waitlist/', locale),
