@@ -27,6 +27,9 @@ export function getSiteConfig(locale: EnabledLocale = defaultLocale) {
     practitionerUrl: withLocale(hubPractitionerUrl, locale),
     signInUrl: withLocale(import.meta.env.PUBLIC_HUB_SIGN_IN_URL || hubAuthUrl, locale),
     telegraphUrl: localisePath('/trust-telegraph/', locale),
+    telegraphFormUrl:
+      import.meta.env.PUBLIC_SAMAI_TRUST_TELEGRAPH_URL ||
+      'https://link.samai.app/widget/form/scY56Cx3pigh1ksxOkQe',
     certifiedWaitlistUrl: localisePath('/certified-practitioner-waitlist/', locale),
     certifiedWaitlistFormUrl:
       import.meta.env.PUBLIC_SAMAI_CERTIFIED_WAITLIST_URL ||
