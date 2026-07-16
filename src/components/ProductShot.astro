@@ -3,24 +3,18 @@ interface Props {
   number: string;
   label: string;
   description: string;
-  align?: 'start' | 'end';
+  image: string;
+  alt: string;
+  width: number;
+  height: number;
 }
 
-const { number, label, description, align = 'start' } = Astro.props;
+const { number, label, description, image, alt, width, height } = Astro.props;
 ---
 
-<figure class:list={['product-shot', `product-shot--${align}`]}>
-  <div class="product-shot__frame" role="img" aria-label={`Placeholder for approved Trust Leader platform screen: ${label}. ${description}`}>
-    <div class="product-shot__chrome" aria-hidden="true">
-      <span></span><span></span><span></span>
-      <b>Trust Leader</b>
-    </div>
-    <div class="product-shot__placeholder">
-      <span>{number}</span>
-      <strong>{label}</strong>
-      <small>Approved platform screenshot to replace this panel</small>
-    </div>
+<figure class="product-shot">
+  <div class="product-shot__frame">
+    <img src={image} alt={alt} width={width} height={height} loading="lazy" decoding="async" />
   </div>
-  <figcaption>{description}</figcaption>
+  <figcaption><strong>{number} · {label}</strong><span>{description}</span></figcaption>
 </figure>
-
