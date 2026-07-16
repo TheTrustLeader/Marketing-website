@@ -64,7 +64,7 @@ const {
   draft = false,
   accent = 'green'
 } = Astro.props;
-const site = Astro.site || new URL('https://www.thetrustleader.com');
+const site = Astro.site || new URL('https://thetrustleader.com');
 const canonical = new URL(Astro.url.pathname, site).toString();
 const pageTitle = `${seoTitle || title} — Trust Leader`;
 const articleSchema = {

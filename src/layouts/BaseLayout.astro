@@ -40,7 +40,7 @@ const {
 } = Astro.props;
 const localeDefinition = getLocaleConfig(locale);
 const messages = getMessages(locale);
-const configuredSite = import.meta.env.PUBLIC_SITE_URL || Astro.site?.toString() || 'https://www.thetrustleader.com';
+const configuredSite = import.meta.env.PUBLIC_SITE_URL || Astro.site?.toString() || 'https://thetrustleader.com';
 const siteUrl = new URL(configuredSite);
 const canonical = new URL(Astro.url.pathname, siteUrl).toString();
 const socialImage = image ? new URL(image, siteUrl).toString() : undefined;

@@ -2,7 +2,7 @@ import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
 export const GET: APIRoute = async ({ site }) => {
-  const origin = site || new URL('https://www.thetrustleader.com');
+  const origin = site || new URL('https://thetrustleader.com');
   const [articles, knowledge] = await Promise.all([
     getCollection('articles', ({ data }) => data.status === 'published'),
     getCollection('knowledge', ({ data }) => data.status === 'published')

@@ -1,7 +1,7 @@
 import type { APIRoute } from 'astro';
 
 export const GET: APIRoute = ({ site }) => {
-  const origin = site || new URL('https://www.thetrustleader.com');
+  const origin = site || new URL('https://thetrustleader.com');
   const noindex = import.meta.env.PUBLIC_ROBOTS_NOINDEX === 'true';
   const rules = noindex
     ? 'User-agent: *\nDisallow: /'
