@@ -19,15 +19,15 @@ const description = 'Receive short, practical Trust Leader thinking for coaches,
           <li>An easy unsubscribe link in every email.</li>
         </ul>
       </div>
-      <form class="conversion-form" name="trust-telegraph" method="POST" action="/trust-telegraph/thanks/" data-netlify="true" netlify-honeypot="company-website" data-analytics-form="trust_telegraph_signup">
-        <input type="hidden" name="form-name" value="trust-telegraph" />
-        <p class="form-honeypot" aria-hidden="true"><label>Do not complete this field <input name="company-website" tabindex="-1" autocomplete="off" /></label></p>
-        <div><label for="telegraph-name">First name</label><input id="telegraph-name" name="first-name" type="text" autocomplete="given-name" required /></div>
-        <div><label for="telegraph-email">Email address</label><input id="telegraph-email" name="email" type="email" autocomplete="email" required /></div>
-        <label class="consent-check"><input name="email-consent" type="checkbox" value="yes" required /><span>I would like to receive Trust Telegraph by email. I understand I can unsubscribe at any time.</span></label>
-        <button class="button button--yellow" type="submit">Join Trust Telegraph</button>
-        <small>Venandi Solutions Ltd will use your details to send Trust Telegraph. Read the <a href={siteConfig.privacyUrl}>privacy policy</a>.</small>
-      </form>
+      <div class="samai-form-shell samai-form-shell--telegraph">
+        <iframe
+          src={siteConfig.telegraphFormUrl}
+          title="Join Trust Telegraph"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+        <p>Samai securely records your subscription for Trust Telegraph. You can unsubscribe from every edition.</p>
+      </div>
     </div>
   </header>
 
@@ -38,10 +38,3 @@ const description = 'Receive short, practical Trust Leader thinking for coaches,
     </div>
   </section>
 </BaseLayout>
-
-<script>
-  document.querySelector<HTMLFormElement>('[data-analytics-form]')?.addEventListener('submit', () => {
-    window.trustLeaderAnalytics?.send('trust_telegraph_submit', { page_path: window.location.pathname });
-  });
-</script>
-
