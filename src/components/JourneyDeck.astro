@@ -1,0 +1,132 @@
+---
+import { defaultLocale, type EnabledLocale } from '@/i18n/config';
+import { formatMessage, getMessages, type JourneyStep } from '@/i18n/messages';
+
+interface Props {
+  locale?: EnabledLocale;
+  steps?: JourneyStep[];
+}
+
+const { locale = defaultLocale, steps: suppliedSteps } = Astro.props;
+const messages = getMessages(locale).journey;
+const steps = suppliedSteps ?? messages.steps;
+const stepCount = formatMessage(messages.stepCountTemplate, { current: 1, total: steps.length });
+---
+
+<section
+  class="journey-deck"
+  aria-labelledby="journey-title"
+  data-journey-deck
+  data-steps={JSON.stringify(steps)}
+  data-step-count-template={messages.stepCountTemplate}
+>
+  <div class="journey-deck__back" aria-hidden="true"></div>
+  <div class="journey-card">
+    <div class="journey-card__top">
+      <span class="sample-label">{messages.fictionalExample}</span>
+      <span class="journey-count" data-journey-count>{stepCount}</span>
+    </div>
+    <div class="journey-card__copy" aria-live="polite" aria-atomic="true">
+      <p class="journey-card__label" data-journey-label>{steps[0].label}</p>
+      <h2 id="journey-title" data-journey-title>{steps[0].title}</h2>
+      <p data-journey-text>{steps[0].text}</p>
+    </div>
+
+    <div class="product-panel" role="img" aria-label={steps[0].alt} data-product-panel>
+      <div class="product-panel__title">
+        <strong>{messages.panelTitle}</strong>
+        <span>{messages.currentView}</span>
+      </div>
+      <div class="map-row">
+        <span>{messages.axes[0]}</span>
+        <span class="map-track"><span class="map-fill map-fill--three"></span></span>
+        <b>3</b>
+      </div>
+      <div class="map-row map-row--focus">
+        <span>{messages.axes[1]}</span>
+        <span class="map-track"><span class="map-fill map-fill--focus" data-focus-fill></span></span>
+        <b data-focus-score>2</b>
+      </div>
+      <div class="map-row">
+        <span>{messages.axes[2]}</span>
+        <span class="map-track"><span class="map-fill map-fill--three"></span></span>
+        <b>3</b>
+      </div>
+      <div class="map-row">
+        <span>{messages.axes[3]}</span>
+        <span class="map-track"><span class="map-fill map-fill--three"></span></span>
+        <b>3</b>
+      </div>
+      <div class="map-row">
+        <span>{messages.axes[4]}</span>
+        <span class="map-track"><span class="map-fill map-fill--three"></span></span>
+        <b>3</b>
+      </div>
+      <small>{messages.illustrativePanel}</small>
+    </div>
+
+    <p class="journey-instructions">{messages.instructions}</p>
+    <div class="journey-controls">
+      <button class="circle-button" type="button" data-journey-previous aria-label={messages.previousStep}>←</button>
+      <div class="journey-dots" role="group" aria-label={messages.chooseStep}>
+        {steps.map((step, index) => (
+          <button
+            class:list={['journey-dot', { 'is-active': index === 0 }]}
+            type="button"
+            data-journey-dot={index}
+            aria-label={formatMessage(messages.showStepTemplate, { current: index + 1, title: step.title })}
+            aria-pressed={index === 0 ? 'true' : 'false'}
+          ></button>
+        ))}
+      </div>
+      <button class="circle-button" type="button" data-journey-next aria-label={messages.nextStep}>→</button>
+    </div>
+  </div>
+  <p class="journey-disclosure">{messages.disclosure}</p>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-journey-deck]').forEach((deck) => {
+    const steps = JSON.parse(deck.dataset.steps || '[]') as Array<{
+      label: string;
+      title: string;
+      text: string;
+      score: number;
+      alt: string;
+    }>;
+    const stepCountTemplate = deck.dataset.stepCountTemplate || 'Step {current} of {total}';
+    let activeIndex = 0;
+    const count = deck.querySelector('[data-journey-count]');
+    const label = deck.querySelector('[data-journey-label]');
+    const title = deck.querySelector('[data-journey-title]');
+    const text = deck.querySelector('[data-journey-text]');
+    const panel = deck.querySelector('[data-product-panel]');
+    const focusFill = deck.querySelector('[data-focus-fill]');
+    const focusScore = deck.querySelector('[data-focus-score]');
+    const dots = [...deck.querySelectorAll('[data-journey-dot]')];
+
+    const showStep = (requestedIndex: number) => {
+      activeIndex = (requestedIndex + steps.length) % steps.length;
+      const step = steps[activeIndex];
+      if (count) {
+        count.textContent = stepCountTemplate
+          .replace('{current}', String(activeIndex + 1))
+          .replace('{total}', String(steps.length));
+      }
+      if (label) label.textContent = step.label;
+      if (title) title.textContent = step.title;
+      if (text) text.textContent = step.text;
+      if (panel) panel.setAttribute('aria-label', step.alt);
+      if (focusFill instanceof HTMLElement) focusFill.style.width = `${step.score * 20}%`;
+      if (focusScore) focusScore.textContent = String(step.score);
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('is-active', index === activeIndex);
+        dot.setAttribute('aria-pressed', String(index === activeIndex));
+      });
+    };
+
+    deck.querySelector('[data-journey-previous]')?.addEventListener('click', () => showStep(activeIndex - 1));
+    deck.querySelector('[data-journey-next]')?.addEventListener('click', () => showStep(activeIndex + 1));
+    dots.forEach((dot, index) => dot.addEventListener('click', () => showStep(index)));
+  });
+</script>

@@ -1,0 +1,50 @@
+---
+import Brand from './Brand.astro';
+import { getSiteConfig } from '@/config/site';
+import { defaultLocale, localisePath, type EnabledLocale } from '@/i18n/config';
+import { getMessages } from '@/i18n/messages';
+
+interface Props {
+  locale?: EnabledLocale;
+}
+
+const { locale = defaultLocale } = Astro.props;
+const siteConfig = getSiteConfig(locale);
+const messages = getMessages(locale);
+---
+
+<footer class="site-footer">
+  <div class="shell">
+    <div class="site-footer__grid">
+      <div>
+        <Brand inverse locale={locale} />
+        <p class="site-footer__summary">{messages.footer.summary}</p>
+      </div>
+      <div>
+        <h2>{messages.footer.explore}</h2>
+        <a href={localisePath('/the-thinking/', locale)}>{messages.navigation.thinking}</a>
+        <a href={localisePath('/how-it-works/', locale)}>{messages.navigation.howItWorks}</a>
+        <a href={localisePath('/for-practitioners/', locale)}>{messages.navigation.practitioners}</a>
+        <a href={localisePath('/pricing/', locale)}>{messages.navigation.pricing}</a>
+        <a href={localisePath('/knowledge-base/', locale)}>{messages.navigation.knowledgeBase}</a>
+        <a href={localisePath('/articles/', locale)}>{messages.navigation.articles}</a>
+      </div>
+      <div>
+        <h2>{messages.footer.connect}</h2>
+        <a href={siteConfig.telegraphUrl}>{messages.telegraph.eyebrow}</a>
+        <a href={siteConfig.certifiedWaitlistUrl}>{messages.footer.certifiedWaitlist}</a>
+        <a href={localisePath('/about/', locale)}>{messages.footer.about}</a>
+        <a href={siteConfig.contactUrl}>{messages.footer.contact}</a>
+      </div>
+      <div>
+        <h2>{messages.footer.account}</h2>
+        <a href={siteConfig.trialUrl} data-analytics="start_trial_footer">{messages.navigation.startTrial}</a>
+        {siteConfig.signInUrl ? <a href={siteConfig.signInUrl}>{messages.navigation.signIn}</a> : <span class="site-footer__pending">{messages.navigation.signInPendingTitle}</span>}
+        <a href={siteConfig.privacyUrl}>{messages.footer.privacy}</a>
+        <a href={siteConfig.termsUrl}>{messages.footer.terms}</a>
+        <a href={siteConfig.cookiesUrl}>{messages.footer.cookies}</a>
+      </div>
+    </div>
+    <p class="site-footer__legal">© {new Date().getFullYear()} {messages.footer.legal}</p>
+  </div>
+</footer>

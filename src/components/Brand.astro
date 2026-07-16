@@ -1,0 +1,20 @@
+---
+import { defaultLocale, localisePath, type EnabledLocale } from '@/i18n/config';
+
+interface Props {
+  inverse?: boolean;
+  locale?: EnabledLocale;
+}
+
+const { inverse = false, locale = defaultLocale } = Astro.props;
+---
+
+<a class:list={['brand', { 'brand--inverse': inverse }]} href={localisePath('/', locale)} aria-label="Trust Leader home">
+  <img
+    class="brand__wordmark"
+    src={inverse ? '/brand/trust-leader-logo-white.png' : '/brand/trust-leader-logo.png'}
+    width="2338"
+    height="1001"
+    alt="The Trust Leader"
+  />
+</a>

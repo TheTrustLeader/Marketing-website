@@ -1,0 +1,78 @@
+---
+import { siteConfig } from '@/config/site';
+
+const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || '';
+---
+
+<aside class="consent-banner" data-consent-banner hidden aria-labelledby="consent-title">
+  <div>
+    <strong id="consent-title">Your privacy choices</strong>
+    <p>We use essential storage to make the site work. With your permission, analytics help us understand which pages and journeys are useful. <a href={siteConfig.cookiesUrl}>Read the cookies policy</a>.</p>
+  </div>
+  <div class="consent-banner__actions">
+    <button class="button button--small button--green" type="button" data-consent-accept>Accept analytics</button>
+    <button class="button button--small button--outline" type="button" data-consent-reject>Essential only</button>
+  </div>
+</aside>
+
+<script is:inline define:vars={{ measurementId }}>
+  (() => {
+    const storageKey = 'trustleader-cookie-choice';
+    const banner = document.querySelector('[data-consent-banner]');
+    let choice = null;
+
+    try {
+      choice = window.localStorage.getItem(storageKey);
+    } catch {
+      choice = null;
+    }
+
+    const send = (name, parameters = {}) => {
+      if (typeof window.gtag !== 'function') return;
+      window.gtag('event', name, parameters);
+    };
+
+    window.trustLeaderAnalytics = { send };
+
+    const loadAnalytics = () => {
+      if (!measurementId || document.querySelector('[data-google-analytics]')) return;
+
+      const external = document.createElement('script');
+      external.async = true;
+      external.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+      external.dataset.googleAnalytics = 'true';
+      document.head.appendChild(external);
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      window.gtag('js', new Date());
+      window.gtag('config', measurementId, { anonymize_ip: true });
+    };
+
+    const setChoice = (value) => {
+      try {
+        window.localStorage.setItem(storageKey, value);
+      } catch {
+        // The choice still applies to this page when storage is unavailable.
+      }
+      if (banner) banner.hidden = true;
+      if (value === 'analytics') loadAnalytics();
+    };
+
+    if (choice === 'analytics') loadAnalytics();
+    if (!choice && banner) banner.hidden = false;
+
+    banner?.querySelector('[data-consent-accept]')?.addEventListener('click', () => setChoice('analytics'));
+    banner?.querySelector('[data-consent-reject]')?.addEventListener('click', () => setChoice('essential'));
+
+    document.addEventListener('click', (event) => {
+      const target = event.target instanceof Element ? event.target.closest('[data-analytics]') : null;
+      if (!target) return;
+      send('site_action', {
+        action: target.getAttribute('data-analytics'),
+        destination: target.getAttribute('href') || '',
+        page_path: window.location.pathname
+      });
+    });
+  })();
+</script>

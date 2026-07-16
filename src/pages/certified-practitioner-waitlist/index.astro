@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/config/site';
+
+const title = 'Join the Certified Practitioner waitlist';
+const description = 'Register for updates about the founding Trust Leader Certified Practitioner cohort. No payment is taken and joining does not guarantee a place.';
+---
+
+<BaseLayout title={`${title} — Trust Leader`} description={description} pageClass="form-page certified-waitlist-page">
+  <header class="page-hero page-hero--form">
+    <div class="shell form-hero__grid">
+      <div>
+        <p class="eyebrow">Certified Practitioner</p>
+        <h1>Join the Certified Practitioner waitlist.</h1>
+        <p class="lede">Register for material updates about the founding cohort and the route to deeper Trust Leader practice.</p>
+        <div class="waitlist-status" aria-label="Current Certified Practitioner position">
+          <p><strong>Not open yet</strong><span>There is no public payment route.</span></p>
+          <p><strong>50 cohort places</strong><span>Capacity, not 50 automatic certifications.</span></p>
+          <p><strong>No deposit</strong><span>Joining records interest only.</span></p>
+        </div>
+        <p>Certified Practitioner is a separate capability above Practitioner membership. It is the route for creating and assigning custom Behaviour Playlists under the Trust Leader method. Payment alone will never grant certification.</p>
+      </div>
+
+      <div class="samai-form-shell">
+        <iframe
+          src={siteConfig.certifiedWaitlistFormUrl}
+          title="Join the Trust Leader Certified Practitioner waitlist"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+        <p>Joining records interest only. No payment is taken and no place, timing, eligibility or price is guaranteed.</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="section section--paper">
+    <div class="shell waitlist-explainer">
+      <div><p class="eyebrow">What happens next</p><h2>A clear record of interest. No hidden commitment.</h2></div>
+      <ol>
+        <li><span>01</span><div><strong>We record your interest.</strong><p>The waitlist is separate from Trust Telegraph unless you choose both.</p></div></li>
+        <li><span>02</span><div><strong>You receive material updates.</strong><p>We will confirm the route, entry requirements, dates, commitment and final price before invitations open.</p></div></li>
+        <li><span>03</span><div><strong>A real invitation comes later.</strong><p>Only an approved cohort invitation can lead to payment or enrolment. You can decline, defer or leave the waitlist.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+</BaseLayout>

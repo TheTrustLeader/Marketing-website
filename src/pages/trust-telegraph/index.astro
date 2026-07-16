@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { siteConfig } from '@/config/site';
+
+const title = 'Join Trust Telegraph';
+const description = 'Receive short, practical Trust Leader thinking for coaches, consultants and L&D practitioners whose work depends on other people’s confidence.';
+---
+
+<BaseLayout title={`${title} — Trust Leader`} description={description} pageClass="form-page">
+  <header class="page-hero page-hero--form">
+    <div class="shell form-hero__grid">
+      <div>
+        <p class="eyebrow">Trust Telegraph</p>
+        <h1>One useful idea about trust, in your inbox.</h1>
+        <p class="lede">Short, practical thinking for people whose work depends on other people’s confidence. No manufactured urgency and no sales email pretending to be advice.</p>
+        <ul class="tick-list">
+          <li>Clear Trust Leader thinking you can use in a conversation.</li>
+          <li>New articles and Knowledge Base answers when they are worth sharing.</li>
+          <li>An easy unsubscribe link in every email.</li>
+        </ul>
+      </div>
+      <form class="conversion-form" name="trust-telegraph" method="POST" action="/trust-telegraph/thanks/" data-netlify="true" netlify-honeypot="company-website" data-analytics-form="trust_telegraph_signup">
+        <input type="hidden" name="form-name" value="trust-telegraph" />
+        <p class="form-honeypot" aria-hidden="true"><label>Do not complete this field <input name="company-website" tabindex="-1" autocomplete="off" /></label></p>
+        <div><label for="telegraph-name">First name</label><input id="telegraph-name" name="first-name" type="text" autocomplete="given-name" required /></div>
+        <div><label for="telegraph-email">Email address</label><input id="telegraph-email" name="email" type="email" autocomplete="email" required /></div>
+        <label class="consent-check"><input name="email-consent" type="checkbox" value="yes" required /><span>I would like to receive Trust Telegraph by email. I understand I can unsubscribe at any time.</span></label>
+        <button class="button button--yellow" type="submit">Join Trust Telegraph</button>
+        <small>Venandi Solutions Ltd will use your details to send Trust Telegraph. Read the <a href={siteConfig.privacyUrl}>privacy policy</a>.</small>
+      </form>
+    </div>
+  </header>
+
+  <section class="section section--paper">
+    <div class="shell newsletter-principles">
+      <div><p class="eyebrow">What to expect</p><h2>Useful enough to keep. Easy to leave.</h2></div>
+      <div><p>Trust Telegraph is the lower-commitment route into Trust Leader. It explains the thinking before asking you to decide whether the platform fits your work.</p><p>Your details are not a licence for unrelated messages. The purpose is clear: send the newsletter and relevant Trust Leader updates you have asked for.</p></div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  document.querySelector<HTMLFormElement>('[data-analytics-form]')?.addEventListener('submit', () => {
+    window.trustLeaderAnalytics?.send('trust_telegraph_submit', { page_path: window.location.pathname });
+  });
+</script>
+

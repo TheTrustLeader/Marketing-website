@@ -1,0 +1,204 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import ArticleGraphic from '@/components/ArticleGraphic.astro';
+import TelegraphCTA from '@/components/TelegraphCTA.astro';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface RelatedLink {
+  href: string;
+  title: string;
+  description: string;
+  label?: string;
+}
+
+interface SourceLink {
+  title: string;
+  href: string;
+  publisher?: string;
+  note?: string;
+}
+
+interface Props {
+  title: string;
+  seoTitle?: string;
+  description: string;
+  eyebrow: string;
+  introduction: string;
+  author?: string;
+  published: Date;
+  updated: Date;
+  readTime: string;
+  keywords?: string[];
+  showToc?: boolean;
+  sources?: SourceLink[];
+  headings?: Heading[];
+  related?: RelatedLink[];
+  collectionLabel: string;
+  collectionUrl: string;
+  draft?: boolean;
+  accent?: 'green' | 'yellow' | 'navy';
+}
+
+const {
+  title,
+  seoTitle,
+  description,
+  eyebrow,
+  introduction,
+  author = 'Scott Hunter',
+  published,
+  updated,
+  readTime,
+  keywords = [],
+  showToc = true,
+  sources = [],
+  headings = [],
+  related = [],
+  collectionLabel,
+  collectionUrl,
+  draft = false,
+  accent = 'green'
+} = Astro.props;
+const site = Astro.site || new URL('https://www.thetrustleader.com');
+const canonical = new URL(Astro.url.pathname, site).toString();
+const pageTitle = `${seoTitle || title} — Trust Leader`;
+const articleSchema = {
+  '@type': 'Article',
+  headline: title,
+  description,
+  datePublished: published.toISOString(),
+  dateModified: updated.toISOString(),
+  inLanguage: 'en-GB',
+  author: { '@type': 'Person', name: author, url: new URL('/about/', site).toString() },
+  publisher: { '@id': new URL('/#organisation', site).toString() },
+  articleSection: eyebrow,
+  ...(keywords.length > 0 ? { keywords } : {}),
+  ...(sources.length > 0 ? {
+    citation: sources.map((source) => ({
+      '@type': 'CreativeWork',
+      name: source.title,
+      url: source.href,
+      ...(source.publisher ? { publisher: { '@type': 'Organization', name: source.publisher } } : {})
+    }))
+  } : {}),
+  mainEntityOfPage: canonical
+};
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', site).toString() },
+    { '@type': 'ListItem', position: 2, name: collectionLabel, item: new URL(collectionUrl, site).toString() },
+    { '@type': 'ListItem', position: 3, name: title, item: canonical }
+  ]
+};
+const tableHeadings = headings.filter((heading) => heading.depth === 2);
+const hasContents = showToc && tableHeadings.length > 0;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  pageClass="article-page"
+  article={{ author, publishedTime: published.toISOString(), modifiedTime: updated.toISOString() }}
+  structuredData={[articleSchema, breadcrumbSchema]}
+  noindex={draft}
+>
+  <nav class="shell breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">›</span>
+    <a href={collectionUrl}>{collectionLabel}</a><span aria-hidden="true">›</span>
+    <span aria-current="page">{title}</span>
+  </nav>
+
+  <header class="article-hero article-hero--content">
+    <div class="shell article-hero__grid">
+      <div>
+        <p class="eyebrow">{eyebrow}</p>
+        <h1>{title}</h1>
+        <p class="lede">{introduction}</p>
+        <p class="article-meta">
+          {draft && <span class="review-badge">Draft for review</span>}
+          <span>By {author}</span>
+          <span>{readTime}</span>
+          <time datetime={updated.toISOString()}>Updated {updated.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</time>
+        </p>
+      </div>
+      <ArticleGraphic title={title} eyebrow={eyebrow} accent={accent} />
+    </div>
+  </header>
+
+  <section class="section section--paper article-section">
+    <div class:list={['shell', 'article-layout', { 'article-layout--no-contents': !hasContents }] }>
+      {hasContents && (
+        <aside class="article-contents" aria-label="On this page">
+          <strong>On this page</strong>
+          {tableHeadings.map((heading) => <a href={`#${heading.slug}`}>{heading.text}</a>)}
+        </aside>
+      )}
+      <article class="article-body prose">
+        <slot />
+        {sources.length > 0 && (
+          <footer class="article-sources" aria-labelledby="article-sources-heading">
+            <h2 id="article-sources-heading">Sources and further reading</h2>
+            <ol>
+              {sources.map((source) => (
+                <li>
+                  <a href={source.href}>{source.title}</a>
+                  {source.publisher && <span>{source.publisher}</span>}
+                  {source.note && <p>{source.note}</p>}
+                </li>
+              ))}
+            </ol>
+          </footer>
+        )}
+      </article>
+      <aside class="article-share" aria-label="Share this page">
+        <strong>Share</strong>
+        <button type="button" data-copy-link aria-label="Copy this page link">Copy link</button>
+        <span data-copy-status aria-live="polite"></span>
+      </aside>
+    </div>
+  </section>
+
+  {related.length > 0 && (
+    <section class="section" aria-labelledby="related-heading">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="eyebrow">Continue exploring</p><h2 id="related-heading">Related thinking and practice.</h2></div>
+          <a class="button button--outline" href={collectionUrl}>Browse {collectionLabel}</a>
+        </div>
+        <div class="related-grid">
+          {related.map((item) => (
+            <article>
+              <p class="meta">{item.label || collectionLabel}</p>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <a class="text-link" href={item.href}>Read next</a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="section section--green">
+    <div class="shell"><TelegraphCTA /></div>
+  </section>
+</BaseLayout>
+
+<script>
+  const button = document.querySelector<HTMLButtonElement>('[data-copy-link]');
+  const status = document.querySelector<HTMLElement>('[data-copy-status]');
+  button?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      if (status) status.textContent = 'Link copied';
+    } catch {
+      if (status) status.textContent = 'Copy the address from your browser';
+    }
+  });
+</script>

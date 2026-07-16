@@ -1,0 +1,62 @@
+---
+import Brand from './Brand.astro';
+import { getSiteConfig } from '@/config/site';
+import { defaultLocale, localisePath, type EnabledLocale } from '@/i18n/config';
+import { getMessages } from '@/i18n/messages';
+
+interface Props {
+  locale?: EnabledLocale;
+}
+
+const { locale = defaultLocale } = Astro.props;
+const siteConfig = getSiteConfig(locale);
+const messages = getMessages(locale);
+const pathname = Astro.url.pathname;
+const links = [
+  { href: localisePath('/the-thinking/', locale), label: messages.navigation.thinking },
+  { href: localisePath('/how-it-works/', locale), label: messages.navigation.howItWorks },
+  { href: localisePath('/for-practitioners/', locale), label: messages.navigation.practitioners },
+  { href: localisePath('/knowledge-base/', locale), label: messages.navigation.knowledgeBase },
+  { href: localisePath('/articles/', locale), label: messages.navigation.articles },
+  { href: localisePath('/pricing/', locale), label: messages.navigation.pricing }
+];
+---
+
+<header class="site-header">
+  <div class="shell site-header__inner">
+    <Brand locale={locale} />
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">
+      <span class="menu-toggle__label">{messages.navigation.menu}</span>
+      <span class="menu-toggle__icon" aria-hidden="true"></span>
+    </button>
+    <nav class="site-nav" id="site-navigation" aria-label={messages.navigation.ariaLabel}>
+      {links.map((link) => (
+        <a href={link.href} aria-current={pathname.startsWith(link.href) ? 'page' : undefined}>{link.label}</a>
+      ))}
+    </nav>
+    <div class="site-header__actions">
+      {siteConfig.signInUrl
+        ? <a class="utility-link" href={siteConfig.signInUrl}>{messages.navigation.signIn}</a>
+        : <span class="utility-link utility-link--pending" title={messages.navigation.signInPendingTitle}>{messages.navigation.signIn}</span>}
+      <a class="button button--small button--green" href={siteConfig.trialUrl} data-analytics="start_trial_header">{messages.navigation.startTrial}</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const navigation = document.querySelector<HTMLElement>('.site-nav');
+
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    navigation?.toggleAttribute('data-open', !open);
+  });
+
+  navigation?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      toggle?.setAttribute('aria-expanded', 'false');
+      navigation.removeAttribute('data-open');
+    });
+  });
+</script>

@@ -1,0 +1,55 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TrialCTA from '@/components/TrialCTA.astro';
+
+const title = 'About Scott Hunter and Trust Leader';
+const description = 'Scott Hunter developed Trust Leader from 18 years in the Prison Service and later work in negotiation, crisis management, facilitation and consulting.';
+const site = Astro.site || new URL('https://www.thetrustleader.com');
+const personSchema = {
+  '@type': 'Person',
+  name: 'Scott Hunter',
+  jobTitle: 'Founder of Trust Leader',
+  url: new URL('/about/', site).toString(),
+  worksFor: { '@id': new URL('/#organisation', site).toString() },
+  description: 'Trust practitioner, facilitator and founder of Trust Leader.'
+};
+---
+
+<BaseLayout title={`${title} — Trust Leader`} description={description} pageClass="about-page" structuredData={personSchema}>
+  <header class="page-hero page-hero--about">
+    <div class="shell about-hero__grid">
+      <div><p class="eyebrow">About</p><h1>I learned about trust in a place designed to run without it.</h1><p class="lede">Eighteen years in the Prison Service taught me that authority and trust are different things. People judge what you do, especially when the answer is difficult.</p></div>
+      <div class="portrait-placeholder portrait-placeholder--about" role="img" aria-label="Placeholder for an approved natural portrait of Scott Hunter"><span>Approved portrait of Scott Hunter to be added</span></div>
+    </div>
+  </header>
+
+  <section class="section section--paper">
+    <div class="shell editorial-grid">
+      <aside class="editorial-aside"><strong>Scott Hunter</strong><p>Founder of Trust Leader. Trust practitioner, facilitator and consultant.</p></aside>
+      <article class="editorial-copy">
+        <p>I spent eighteen years in the Prison Service, including time as a Senior Officer on D wing at HMP Dartmoor. A prison is regulated, ruled and short on assumed trust. My uniform came with authority. It did not make anyone confident in me.</p>
+        <p>People had my behaviour to judge: whether I was straight with them when the answer was no, whether the same standards applied each time, whether I did what I said, and whether I gave early warning when I could not.</p>
+
+        <h2>The letter</h2>
+        <p>In March 2007, a letter arrived from the governor marked personal. I still have it.</p>
+        <blockquote class="governor-letter">“I write to commend you for your fair and honest treatment of prisoners. Following my discussions with prisoners on D wing this week, they relayed to me that you are a decent member of staff who treats prisoners with respect.”</blockquote>
+        <p>I was not in those conversations, and the people speaking had nothing to gain from the description. Fair. Honest. Decent. If I could have chosen three words, I would have chosen those.</p>
+
+        <h2>From authority to behaviour</h2>
+        <p>One lesson stayed with me. Authority can produce compliance. Confidence comes from the way someone repeatedly experiences you.</p>
+        <p>By the end of those eighteen years I was working in national training across hostage negotiation, crisis management, communication and incident command. These are settings where trust affects whether the words work.</p>
+        <p>I later moved into facilitation and consultancy, delivering professional qualifications and supporting programmes across the UK, Europe and the Middle East. The environment changed. The pattern did not. People with good intentions were not always trusted, and “trust matters” gave them little to practise.</p>
+
+        <h2>Why Trust Leader exists</h2>
+        <p>Trust Leader turns that experience into a practical approach. Trust is someone’s confidence in you with something they care about. It is their decision, shaped by how they experience your behaviour.</p>
+        <p>The platform helps practitioners make the relationship specific, choose useful behaviour and create evidence through practice. It does not replace the human judgement needed to do the work well.</p>
+
+        <h2>Outside the work</h2>
+        <p>I am happiest outdoors, on my bike more occasionally than I would like, or somewhere new. New places and different ways of working have kept the same question alive: what makes one person willing to rely on another?</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section--green"><div class="shell"><TrialCTA heading="Put one real relationship at the centre." /></div></section>
+</BaseLayout>
+

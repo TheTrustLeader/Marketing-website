@@ -1,0 +1,82 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import TrialCTA from '@/components/TrialCTA.astro';
+import { siteConfig } from '@/config/site';
+
+const title = 'Trust Leader pricing for practitioners';
+const description = 'Start with a 28-day free trial. Practitioner membership is £75 a month or £750 a year with five client seats included.';
+const faqs = [
+  { question: 'What happens when the 28-day trial ends?', answer: 'Nothing is charged because no card is taken. Paid access stops unless you choose to continue.' },
+  { question: 'What counts as a client seat?', answer: 'A client seat is one active client account. Your Practitioner account does not use one of the five included client seats. Removing a client frees that seat.' },
+  { question: 'Can I add an administrator?', answer: 'Yes. An optional admin licence is separate from the five client seats and uses the same per-seat rate as your current volume band.' },
+  { question: 'Can I pay monthly or annually?', answer: 'Yes. Practitioner membership is £75 monthly or £750 annually. The features are the same.' },
+  { question: 'Can I buy certification now?', answer: 'No. Certification is a separate pathway and is not open for direct purchase. You can join the Certified Practitioner waitlist. No payment is taken and joining does not guarantee a place.' },
+  { question: 'Is Trust Leader designed for individual self-development?', answer: 'The platform is designed around practitioners working with clients. The public thinking and Knowledge Base are open to everyone, and the trial can be used as a taster.' }
+];
+const site = Astro.site || new URL('https://www.thetrustleader.com');
+const structuredData = [
+  {
+    '@type': 'SoftwareApplication',
+    name: 'Trust Leader',
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    description,
+    offers: [
+      { '@type': 'Offer', name: '28-day free trial', price: '0', priceCurrency: 'GBP', url: siteConfig.trialUrl },
+      { '@type': 'Offer', name: 'Practitioner monthly', price: '75', priceCurrency: 'GBP', url: new URL('/pricing/', site).toString() },
+      { '@type': 'Offer', name: 'Practitioner annual', price: '750', priceCurrency: 'GBP', url: new URL('/pricing/', site).toString() }
+    ]
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({ '@type': 'Question', name: faq.question, acceptedAnswer: { '@type': 'Answer', text: faq.answer } }))
+  }
+];
+---
+
+<BaseLayout title={`${title} — Trust Leader`} description={description} pageClass="pricing-page" structuredData={structuredData}>
+  <header class="page-hero page-hero--pricing">
+    <div class="shell page-hero__grid">
+      <div><p class="eyebrow">Pricing</p><h1>Clear pricing. No automatic conversion.</h1><p class="lede">Start with one relationship for 28 days. No credit card is taken. You decide whether the platform earns a place in your practice.</p></div>
+      <aside class="price-signal"><span>Practitioner</span><strong>£75</strong><small>a month · five client seats</small><b>or £750 a year</b></aside>
+    </div>
+  </header>
+
+  <section class="section section--paper" aria-labelledby="plans-heading">
+    <div class="shell">
+      <div class="section-heading"><div><p class="eyebrow">Choose the next useful step</p><h2 id="plans-heading">Four routes, one clear starting point.</h2></div><p>The public website and Knowledge Base are open to read. Pricing begins when you use the product with a relationship or client.</p></div>
+      <div class="pricing-grid">
+        <article><span>Start here</span><h3>28-day trial</h3><strong>£0</strong><p>Use one Trust Map and a focused Trust Journey to understand the experience.</p><ul><li>No credit card</li><li>No automatic subscription</li><li>Stops unless you choose to continue</li></ul><a class="button button--green" href={siteConfig.trialUrl} data-analytics="start_trial">Start free trial</a></article>
+        <article class="pricing-card--featured"><span>Practitioner</span><h3>Work with clients</h3><strong>£75 <small>/ month</small></strong><p>Five client seats and the Practitioner tools needed to support each journey.</p><ul><li>£750 annual option</li><li>Five active client seats</li><li>Your Practitioner account does not use a seat</li><li>Add client seats or an admin licence as your practice grows</li></ul><div class="pricing-card__actions"><a class="button button--yellow" href={siteConfig.practitionerUrl} data-analytics="join_practitioner">Join as Practitioner</a><a class="pricing-card__secondary" href={siteConfig.trialUrl} data-analytics="start_trial_practitioner">Or start the 28-day trial</a></div><small class="pricing-card__handoff">Create or sign in to your account, then choose monthly or annual secure checkout.</small></article>
+        <article><span>Opening later</span><h3>Certified Practitioner</h3><strong>Separate pathway</strong><p>For practitioners who want to create and assign custom Behaviour Playlists under the Trust Leader method.</p><ul><li>50 places in the founding cohort</li><li>No public payment route</li><li>Practitioner membership stays separate</li></ul><a class="button button--outline" href={siteConfig.certifiedWaitlistUrl}>Join the Certified Practitioner waitlist</a></article>
+        <article><span>Larger use</span><h3>Partner</h3><strong>Let’s talk</strong><p>For consultancies, providers and organisations using Trust Leader across programmes or cohorts.</p><ul><li>Programme fit</li><li>Seats and support</li><li>Co-branding route</li></ul><a class="button button--outline" href="/contact/?topic=partnership">Start a conversation</a></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--green">
+    <div class="shell founder-block">
+      <div><p class="eyebrow">Founding Members</p><h2>A price promise for the first practitioner cohort.</h2></div>
+      <div><p>The first 100 paying Practitioner memberships are Founding Memberships. Their £75 monthly price stays locked while the membership remains active.</p><p>The limit reflects the number of early members we can support and learn from properly. Founding Practitioner status is separate from the 50-place Certified Practitioner cohort and does not guarantee an invitation.</p></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="seat-heading">
+    <div class="shell seat-grid">
+      <div><p class="eyebrow">Client seats</p><h2 id="seat-heading">Five client places. Your account sits outside them.</h2><p>The £75 price includes five active client seats. Your Practitioner account does not use one. Removing a client frees their seat. An optional admin licence is charged at the same per-seat rate as your current volume band.</p></div>
+      <div class="seat-ladder" aria-label="Monthly seat pricing"><div><span>1–5 client seats</span><strong>Included</strong><small>in £75 membership</small></div><div><span>6–10 paid seats</span><strong>£14</strong><small>each, per month</small></div><div><span>11+ paid seats</span><strong>£13</strong><small>each, per month</small></div></div>
+    </div>
+  </section>
+
+  <section class="section section--paper" aria-labelledby="faq-heading">
+    <div class="shell faq-layout">
+      <div><p class="eyebrow">Questions answered plainly</p><h2 id="faq-heading">What practitioners usually ask.</h2></div>
+      <div class="faq-list">
+        {faqs.map((faq, index) => <details open={index === 0}><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}
+        <details><summary>Can I cancel or request a refund?</summary><p>You can cancel from your account and retain access until the end of the period paid for. Read the full <a href={siteConfig.refundUrl}>refund policy</a>.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--navy"><div class="shell"><TrialCTA /></div></section>
+</BaseLayout>
