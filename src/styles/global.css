@@ -701,6 +701,7 @@
   .form-honeypot { position: absolute; inset-inline-start: -10000px; width: 1px; height: 1px; overflow: hidden; }
   .samai-form-shell { overflow: hidden; border-radius: 24px; color: var(--muted); background: var(--paper); box-shadow: var(--shadow); }
   .samai-form-shell iframe { display: block; width: 100%; min-height: 790px; border: 0; background: var(--paper); }
+  .samai-form-shell--telegraph iframe { min-height: 640px; }
   .samai-form-shell p { margin: 0; border-block-start: 1px solid var(--line); padding: 1rem 1.4rem 1.2rem; font-size: .78rem; line-height: 1.5; }
   .newsletter-principles { border-top: 5px solid var(--yellow); padding-top: 2rem; }
   .waitlist-status { display: grid; gap: 1px; margin: 1.8rem 0; border: 1px solid var(--line); background: var(--line); }
@@ -854,6 +855,7 @@
     .consent-banner__actions { display: grid; grid-template-columns: 1fr 1fr; }
     .conversion-form { padding: 1.4rem; }
     .samai-form-shell iframe { min-height: 860px; }
+    .samai-form-shell--telegraph iframe { min-height: 710px; }
     .waitlist-status p { grid-template-columns: 1fr; gap: .15rem; }
     .site-footer__grid { grid-template-columns: 1fr; }
   }
