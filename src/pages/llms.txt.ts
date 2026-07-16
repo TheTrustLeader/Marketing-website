@@ -17,7 +17,7 @@ export const GET: APIRoute = async ({ site }) => {
     '',
     '## Core pages',
     link('/the-thinking/', 'The thinking', 'The Trust Leader definition and outside-in view of trust.'),
-    link('/how-it-works/', 'How it works', 'Trust Map, behavioural focus, practice, private reflection and review.'),
+    link('/how-it-works/', 'How it works', 'Trust Map, behavioural focus, practice, client-controlled reflection and review.'),
     link('/for-practitioners/', 'For practitioners', 'How coaches, consultants and L&D practitioners use the platform.'),
     link('/pricing/', 'Pricing', 'Trial, practitioner membership, certification and partnership routes.'),
     link('/about/', 'About Scott Hunter', 'The practical experience behind Trust Leader.'),
