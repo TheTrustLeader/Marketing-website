@@ -5,7 +5,7 @@ export interface JourneyStep {
   label: string;
   title: string;
   text: string;
-  score: number;
+  image: string;
   alt: string;
 }
 
@@ -52,12 +52,8 @@ export interface SharedMessages {
     chooseStep: string;
     showStepTemplate: string;
     nextStep: string;
-    panelTitle: string;
-    currentView: string;
-    illustrativePanel: string;
     instructions: string;
     disclosure: string;
-    axes: [string, string, string, string, string];
     steps: JourneyStep[];
   };
 }
@@ -105,60 +101,29 @@ const en: SharedMessages = {
     chooseStep: 'Choose a Trust Journey step',
     showStepTemplate: 'Show step {current}: {title}',
     nextStep: 'Next Trust Journey step',
-    panelTitle: 'Maya’s Trust Map',
-    currentView: 'Daniel · current view',
-    illustrativePanel: 'Illustrative product panel',
-    instructions: 'Follow Maya’s six-step Trust Journey. Use the arrows to see what changed.',
-    disclosure: 'Fictional people and demonstration data. Shown for illustration only.',
-    axes: [
-      'Clarity & Honesty',
-      'Delivery & Consistency',
-      'Capability & Realism',
-      'Understanding & Connection',
-      'Fairness & Consideration'
-    ],
+    instructions: 'Use the arrows to follow Maya’s journey.',
+    disclosure: 'Real product screens using fictional people and demonstration data.',
     steps: [
       {
-        label: 'One relationship',
-        title: 'Start with what matters',
-        text: 'Daniel’s targets depend on Maya’s delivery. She needs him to back her judgement instead of working around her.',
-        score: 2,
-        alt: 'Maya’s Trust Map journey begins with Daniel and the outcome she wants in their working relationship.'
-      },
-      {
         label: 'Map',
-        title: 'See where confidence may be held back',
-        text: 'Maya maps her view of how Daniel currently experiences her. Delivery and Consistency is the clearest gap.',
-        score: 2,
-        alt: 'Maya’s Trust Map shows Delivery and Consistency as the lowest area, scored 2 out of 5.'
-      },
-      {
-        label: 'Focus',
-        title: 'Choose one behaviour',
-        text: 'Maya chooses Flag It Early: give progress updates and raise risks before Daniel has to chase.',
-        score: 2,
-        alt: 'Maya selects B5 Flag It Early as the behaviour she will practise with Daniel.'
+        title: 'See where to focus',
+        text: 'Maya’s map makes one relationship specific: Daniel’s confidence matters, and Delivery & Consistency is the clearest gap.',
+        image: '/images/trust-journey/01-identify.webp',
+        alt: 'Maya’s Trust Map showing Delivery and Consistency as the focus area in her fictional relationship with Daniel.'
       },
       {
         label: 'Practise',
-        title: 'Act in the real relationship',
-        text: 'Three short activities turn the behaviour into something Maya can practise between sessions.',
-        score: 2,
-        alt: 'Maya’s playlist contains If Only, Early Warning and Red Flag Slalom.'
-      },
-      {
-        label: 'Reflect',
-        title: 'Record what happened',
-        text: 'Maya records what she tried and how Daniel responded. Her next coaching conversation has something specific to work with.',
-        score: 2,
-        alt: 'Maya records a private fictional reflection after practising with Daniel.'
+        title: 'Turn one behaviour into action',
+        text: 'She chooses Flag It Early and uses short activities to practise it in the real relationship—not just in the coaching session.',
+        image: '/images/trust-journey/03-design.webp',
+        alt: 'Maya’s Flag It Early playlist showing the Early Warning and Red Flag Slalom practice activities.'
       },
       {
         label: 'Review',
-        title: 'See what moved',
-        text: 'At day 14, Delivery and Consistency moves from 2 to 3 in Maya’s own Trust Map. Early movement—not a verdict or guarantee.',
-        score: 3,
-        alt: 'Maya’s day-14 Trust Map shows Delivery and Consistency moving from 2 to 3.'
+        title: 'Bring back real evidence',
+        text: 'Maya records what she tried, what happened and what to carry forward, giving the next conversation something concrete to work with.',
+        image: '/images/trust-journey/05-reflect.webp',
+        alt: 'Maya’s private fictional journal entry recording what she did to strengthen trust and what she will carry forward.'
       }
     ]
   }
