@@ -28,6 +28,9 @@ export function getSiteConfig(locale: EnabledLocale = defaultLocale) {
     signInUrl: withLocale(import.meta.env.PUBLIC_HUB_SIGN_IN_URL || hubAuthUrl, locale),
     telegraphUrl: localisePath('/trust-telegraph/', locale),
     certifiedWaitlistUrl: localisePath('/certified-practitioner-waitlist/', locale),
+    certifiedWaitlistFormUrl:
+      import.meta.env.PUBLIC_SAMAI_CERTIFIED_WAITLIST_URL ||
+      'https://link.samai.app/widget/form/mQK6UYI4EWvxolH20Pmn',
     contactUrl: localisePath('/contact/', locale),
     privacyUrl: 'https://hub.thetrustleader.com/privacy-policy',
     termsUrl: 'https://hub.thetrustleader.com/website-terms-and-conditions',

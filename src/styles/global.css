@@ -699,6 +699,9 @@
   .consent-check { display: grid; grid-template-columns: 20px 1fr; align-items: start; gap: .7rem; }
   .consent-check input { width: 18px; height: 18px; margin-top: .15rem; accent-color: var(--green); }
   .form-honeypot { position: absolute; inset-inline-start: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .samai-form-shell { overflow: hidden; border-radius: 24px; color: var(--muted); background: var(--paper); box-shadow: var(--shadow); }
+  .samai-form-shell iframe { display: block; width: 100%; min-height: 790px; border: 0; background: var(--paper); }
+  .samai-form-shell p { margin: 0; border-block-start: 1px solid var(--line); padding: 1rem 1.4rem 1.2rem; font-size: .78rem; line-height: 1.5; }
   .newsletter-principles { border-top: 5px solid var(--yellow); padding-top: 2rem; }
   .waitlist-status { display: grid; gap: 1px; margin: 1.8rem 0; border: 1px solid var(--line); background: var(--line); }
   .waitlist-status p { display: grid; grid-template-columns: minmax(120px, .65fr) 1.35fr; gap: 1rem; margin: 0; padding: .9rem 1rem; background: rgb(255 255 255 / 58%); }
@@ -850,6 +853,7 @@
     .consent-banner { inset-inline: .7rem; bottom: .7rem; gap: 1rem; }
     .consent-banner__actions { display: grid; grid-template-columns: 1fr 1fr; }
     .conversion-form { padding: 1.4rem; }
+    .samai-form-shell iframe { min-height: 860px; }
     .waitlist-status p { grid-template-columns: 1fr; gap: .15rem; }
     .site-footer__grid { grid-template-columns: 1fr; }
   }

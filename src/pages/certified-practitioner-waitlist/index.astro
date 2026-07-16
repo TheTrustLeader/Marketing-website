@@ -21,31 +21,15 @@ const description = 'Register for updates about the founding Trust Leader Certif
         <p>Certified Practitioner is a separate capability above Practitioner membership. It is the route for creating and assigning custom Behaviour Playlists under the Trust Leader method. Payment alone will never grant certification.</p>
       </div>
 
-      <form class="conversion-form" name="certified-practitioner-waitlist" method="POST" action="/certified-practitioner-waitlist/thanks/" data-netlify="true" netlify-honeypot="company-website" data-certified-waitlist-form>
-        <input type="hidden" name="form-name" value="certified-practitioner-waitlist" />
-        <input type="hidden" name="form-version" value="certified-waitlist-v1" />
-        <input type="hidden" name="source-page" value="/certified-practitioner-waitlist/" data-source-page />
-        <input type="hidden" name="subject" value="New Certified Practitioner waitlist registration — %{submissionId}" data-remove-prefix />
-        <p class="form-honeypot" aria-hidden="true"><label>Do not complete this field <input name="company-website" tabindex="-1" autocomplete="off" /></label></p>
-        <div><label for="waitlist-name">Name</label><input id="waitlist-name" name="name" type="text" autocomplete="name" required /></div>
-        <div><label for="waitlist-email">Email address</label><input id="waitlist-email" name="email" type="email" autocomplete="email" required /></div>
-        <div>
-          <label for="waitlist-practice">Which best describes your work? <small>(optional)</small></label>
-          <select id="waitlist-practice" name="practice-type">
-            <option value="">Choose one</option>
-            <option value="coach">Coach</option>
-            <option value="consultant">Consultant</option>
-            <option value="internal-ld-od-people">Internal L&amp;D, OD or People practitioner</option>
-            <option value="external-provider">External learning or consultancy provider</option>
-            <option value="organisation">Organisation exploring cohort use</option>
-            <option value="other">Something else</option>
-          </select>
-        </div>
-        <label class="consent-check"><input name="certification-update-consent" type="checkbox" value="yes" required /><span>I would like to receive emails about Trust Leader Certified Practitioner and the founding certification cohort. I understand I can unsubscribe at any time.</span></label>
-        <label class="consent-check"><input name="trust-telegraph-consent" type="checkbox" value="yes" /><span>I would also like to receive Trust Telegraph articles, product news and offers by email. <strong>Optional</strong></span></label>
-        <button class="button button--yellow" type="submit">Join the Certified Practitioner waitlist</button>
-        <small>Certification is not open. No payment will be taken and joining does not guarantee eligibility, selection, timing, price or a place. Read the <a href={siteConfig.privacyUrl}>privacy policy</a>.</small>
-      </form>
+      <div class="samai-form-shell">
+        <iframe
+          src={siteConfig.certifiedWaitlistFormUrl}
+          title="Join the Trust Leader Certified Practitioner waitlist"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+        ></iframe>
+        <p>Joining records interest only. No payment is taken and no place, timing, eligibility or price is guaranteed.</p>
+      </div>
     </div>
   </header>
 
@@ -60,12 +44,4 @@ const description = 'Register for updates about the founding Trust Leader Certif
     </div>
   </section>
 
-  <script>
-    const form = document.querySelector<HTMLFormElement>('[data-certified-waitlist-form]');
-    const source = document.querySelector<HTMLInputElement>('[data-source-page]');
-    if (source) source.value = `${window.location.pathname}${window.location.search}`;
-    form?.addEventListener('submit', () => {
-      window.trustLeaderAnalytics?.send('certified_waitlist_submit', { page_path: window.location.pathname });
-    });
-  </script>
 </BaseLayout>
