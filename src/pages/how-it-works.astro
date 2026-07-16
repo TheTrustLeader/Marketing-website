@@ -31,10 +31,14 @@ const softwareSchema = {
         <p class="lede">Map one real relationship, choose one behaviour to practise, reflect privately and review dated evidence together.</p>
         <a class="button button--green" href="#trust-journey">Follow the Trust Journey</a>
       </div>
-      <div class="loop-visual" aria-label="Trust Leader process: map, focus, practise, reflect and review">
-        <span>Map</span><span>Focus</span><span>Practise</span><span>Reflect</span><span>Review</span>
-        <strong>One real relationship</strong>
-      </div>
+      <ol class="journey-route" aria-label="Trust Journey: identify, focus, design, facilitate, reflect and review">
+        <li data-step="01"><div><strong>Identify</strong><small>Map one relationship</small></div></li>
+        <li data-step="02"><div><strong>Focus</strong><small>Choose one behaviour</small></div></li>
+        <li data-step="03"><div><strong>Design</strong><small>Build short practice</small></div></li>
+        <li data-step="04"><div><strong>Facilitate</strong><small>Act in real work</small></div></li>
+        <li data-step="05"><div><strong>Reflect</strong><small>Record what happened</small></div></li>
+        <li data-step="06"><div><strong>Review</strong><small>Decide what comes next</small></div></li>
+      </ol>
     </div>
   </header>
 
@@ -50,32 +54,32 @@ const softwareSchema = {
   <section class="section" id="trust-journey" aria-labelledby="journey-heading">
     <div class="shell">
       <div class="section-heading">
-        <div><p class="eyebrow">The Trust Journey</p><h2 id="journey-heading">A connected loop, not a content course.</h2></div>
+        <div><p class="eyebrow">The Trust Journey</p><h2 id="journey-heading">A connected journey, not a content course.</h2></div>
         <p>The platform gives the work a structure. The important action still happens with the person whose confidence matters.</p>
       </div>
 
       <ol class="journey-steps">
-        <li class="journey-step">
+        <li class="journey-step" id="identify" data-step="01">
           <div class="journey-step__copy"><span>01 · Identify</span><h3>See where confidence may be held back.</h3><p>Your client chooses one person and one outcome that depends on the relationship. The Trust Map uses five questions to make their current view specific.</p><strong>What this gives you</strong><p>A named relationship, a real goal and one area you can work with.</p></div>
           <ProductShot number="01" label="Trust Map" description="Maya’s view of how Daniel currently experiences Delivery and Consistency." />
         </li>
-        <li class="journey-step journey-step--reverse">
+        <li class="journey-step journey-step--reverse" id="focus" data-step="02">
           <div class="journey-step__copy"><span>02 · Focus</span><h3>Choose one behaviour that could matter.</h3><p>The largest gap does not become a verdict. It becomes a place to explore. Maya chooses B5 · Flag It Early because Daniel needs earlier updates and fewer surprises.</p><strong>What this gives you</strong><p>A practical choice instead of a broad instruction to “work on trust”.</p></div>
           <ProductShot number="02" label="Choose a behaviour" description="Delivery and Consistency becomes the focus for Maya’s first 28-day journey." align="end" />
         </li>
-        <li class="journey-step">
+        <li class="journey-step" id="practise" data-step="03">
           <div class="journey-step__copy"><span>03 · Design</span><h3>Turn the focus into short practice.</h3><p>Three activities help Maya notice, rehearse and use the behaviour in the real relationship. The work continues between conversations.</p><strong>What this gives you</strong><p>A client who returns with something they tried, not only something they intended.</p></div>
           <ProductShot number="03" label="Behaviour Playlist" description="If Only, Early Warning and Red Flag Slalom form Maya’s fictional demonstration playlist." />
         </li>
-        <li class="journey-step journey-step--reverse">
+        <li class="journey-step journey-step--reverse" id="real-work" data-step="04">
           <div class="journey-step__copy"><span>04 · Facilitate</span><h3>Act where the trust is needed.</h3><p>The activity is a prompt for workplace action, not screen completion. Maya raises a risk while Daniel still has choices.</p><strong>What this gives you</strong><p>A bridge from the coaching or L&D conversation into daily work.</p></div>
           <ProductShot number="04" label="Activity guidance" description="A short prompt prepares Maya to flag a live risk clearly and early." align="end" />
         </li>
-        <li class="journey-step">
+        <li class="journey-step" id="reflect" data-step="05">
           <div class="journey-step__copy"><span>05 · Reflect</span><h3>Record what happened privately.</h3><p>Reflections and journals are private by default. Your client can decide what to bring into the next conversation, while the platform keeps a dated record for them.</p><strong>What this gives you</strong><p>Specific material for reflection without turning private thinking into surveillance.</p></div>
           <ProductShot number="05" label="Private reflection" description="Maya records what she tried, what happened and what she noticed." />
         </li>
-        <li class="journey-step journey-step--reverse">
+        <li class="journey-step journey-step--reverse" id="review" data-step="06">
           <div class="journey-step__copy"><span>06 · Review</span><h3>Revisit the map and decide what comes next.</h3><p>The same relationship and questions can be reviewed later. Maya’s fictional score moves from 2 to 3. That is early movement in her own view, not proof or a final verdict.</p><strong>What this gives you</strong><p>Dated evidence for a better conversation about progress and the next choice.</p></div>
           <ProductShot number="06" label="Trust Journey review" description="The review connects the starting map, practice, reflections and later score." align="end" />
         </li>
@@ -92,4 +96,3 @@ const softwareSchema = {
 
   <section class="section section--green"><div class="shell"><TrialCTA /></div></section>
 </BaseLayout>
-

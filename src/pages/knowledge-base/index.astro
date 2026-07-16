@@ -9,11 +9,10 @@ const description =
 
 const topics = [
   { id: 'understand', number: '01', heading: 'Understand trust', text: 'Definitions, common misconceptions and the five Trust Questions.', link: '/the-thinking/' },
-  { id: 'trust-map', number: '02', heading: 'Map a relationship', text: 'Choose a person, answer the questions and interpret the result carefully.', link: '/how-it-works/#trust-journey' },
+  { id: 'trust-map', number: '02', heading: 'Map a relationship', text: 'Choose a person, answer the questions and interpret the result carefully.', link: '/how-it-works/#identify' },
   { id: 'behaviours', number: '03', heading: 'Choose a behaviour', text: 'Move from a broad concern to one behaviour that can make a useful difference.', link: '/knowledge-base/flag-it-early/' },
-  { id: 'practise', number: '04', heading: 'Practise in real work', text: 'Use short activities to try something different in the relationship.', link: '/how-it-works/#trust-journey' },
-  { id: 'reflect-review', number: '05', heading: 'Reflect and review', text: 'Record privately, notice evidence and decide what to do next.', link: '/how-it-works/#trust-journey' },
-  { id: 'platform', number: '06', heading: 'Use the platform', text: 'Task-based walkthroughs will be added after the current Hub screens are captured.', link: '#walkthroughs' }
+  { id: 'practise', number: '04', heading: 'Practise in real work', text: 'Use short activities to try something different in the relationship.', link: '/how-it-works/#practise' },
+  { id: 'reflect-review', number: '05', heading: 'Reflect and review', text: 'Record privately, notice evidence and decide what to do next.', link: '/how-it-works/#reflect' }
 ];
 const knowledgeEntries = (await getCollection('knowledge')).sort((a, b) => Number(b.data.featured) - Number(a.data.featured));
 const allDrafts = knowledgeEntries.every((entry) => entry.data.status !== 'published');
@@ -89,25 +88,6 @@ const allDrafts = knowledgeEntries.every((entry) => entry.data.status !== 'publi
     </div>
   </section>
 
-  <section class="section" id="walkthroughs" aria-labelledby="walkthrough-heading">
-    <div class="shell">
-      <div class="section-heading">
-        <div><p class="eyebrow">Guided walkthroughs</p><h2 id="walkthrough-heading">See the task. Then do it.</h2></div>
-        <p>Short click-through product guidance belongs here, where a visitor has a task to complete.</p>
-      </div>
-      <div class="guide-grid">
-        <article class="guide-card">
-          <div class="guide-card__visual" aria-hidden="true"><span>▶</span></div>
-          <div><p class="meta">2-minute walkthrough</p><h3>Create your first Trust Map</h3><p>From choosing the relationship to identifying a focus.</p><span class="pending-link">Interactive guide pending product capture</span></div>
-        </article>
-        <article class="guide-card">
-          <div class="guide-card__visual" aria-hidden="true"><span>↗</span></div>
-          <div><p class="meta">90-second walkthrough</p><h3>Add an activity to a playlist</h3><p>Choose an activity that fits the behaviour and the real situation.</p><span class="pending-link">Interactive guide pending product capture</span></div>
-        </article>
-      </div>
-    </div>
-  </section>
-
   <section class="section section--paper" id="popular" aria-labelledby="popular-heading">
     <div class="shell">
       <div class="section-heading">
@@ -115,9 +95,9 @@ const allDrafts = knowledgeEntries.every((entry) => entry.data.status !== 'publi
       </div>
       <div class="popular-list">
         <a href="/knowledge-base/flag-it-early/"><span>01</span><strong>Why flagging a risk early strengthens delivery trust</strong><em>Use a difficult update to create confidence rather than erode it.</em><b aria-hidden="true">→</b></a>
-        <a href="/how-it-works/#trust-journey"><span>02</span><strong>Is a Trust Map a diagnostic?</strong><em>No. It is one person’s structured view of a relationship.</em><b aria-hidden="true">→</b></a>
-        <a href="/how-it-works/#trust-journey"><span>03</span><strong>Are reflections shared automatically?</strong><em>No. Reflections and journals are private by default.</em><b aria-hidden="true">→</b></a>
-        <a href="/how-it-works/#trust-journey"><span>04</span><strong>How do I choose one focus?</strong><em>Look for the behaviour that could make a useful difference in this relationship.</em><b aria-hidden="true">→</b></a>
+        <a href="/how-it-works/#identify"><span>02</span><strong>Is a Trust Map a diagnostic?</strong><em>No. It is one person’s structured view of a relationship.</em><b aria-hidden="true">→</b></a>
+        <a href="/how-it-works/#reflect"><span>03</span><strong>Are reflections shared automatically?</strong><em>No. Reflections and journals are private by default.</em><b aria-hidden="true">→</b></a>
+        <a href="/how-it-works/#focus"><span>04</span><strong>How do I choose one focus?</strong><em>Look for the behaviour that could make a useful difference in this relationship.</em><b aria-hidden="true">→</b></a>
       </div>
     </div>
   </section>
